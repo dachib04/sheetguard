@@ -1,0 +1,9 @@
+{
+  "mcpServers": {
+    "sheetguard": {
+      "command": "uvx",
+      "args": ["--from", "sheetguard[mcp,eval] @ git+https://github.com/dachib04/sheetguard", "sheetguard-mcp",
+               "--root", "/Users/YOU/Documents/Models"]
+    }
+  }
+}

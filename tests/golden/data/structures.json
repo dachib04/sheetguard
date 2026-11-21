@@ -1,0 +1,150 @@
+{
+  "issues": [],
+  "likely_outputs": [
+    {
+      "address": "Orders!G1",
+      "upstream_cells": 9
+    },
+    {
+      "address": "'It''s Ünïcode'!B3",
+      "upstream_cells": 5
+    },
+    {
+      "address": "Orders!G2",
+      "upstream_cells": 3
+    }
+  ],
+  "options": {
+    "checks": [
+      "C01",
+      "C02",
+      "C03",
+      "C04",
+      "C05",
+      "C06",
+      "C07",
+      "C08",
+      "C09",
+      "C10",
+      "C11",
+      "C12",
+      "C13",
+      "C14"
+    ],
+    "min_severity": "info"
+  },
+  "schema_version": "0.1.0",
+  "summary": {
+    "by_check": {},
+    "by_severity": {
+      "critical": 0,
+      "info": 0,
+      "warning": 0
+    },
+    "total": 0
+  },
+  "tool": "sheetguard",
+  "tool_version": "0.1.0",
+  "untrusted_content": [],
+  "untrusted_summary": {
+    "by_risk": {
+      "high": 0,
+      "low": 0,
+      "medium": 0
+    },
+    "by_vector": {},
+    "total": 0
+  },
+  "workbook": {
+    "cell_count": 34,
+    "defined_names": 1,
+    "file_name": "structures.xlsx",
+    "flags": {
+      "activex": false,
+      "cached_values": true,
+      "calc_mode": "auto",
+      "data_connections": false,
+      "date_1904": false,
+      "dde": false,
+      "external_links": false,
+      "hidden_sheets": 0,
+      "iterative_calc": false,
+      "macros_present": false,
+      "ole_objects": false,
+      "untrusted_content_found": false,
+      "vba": false,
+      "very_hidden_sheets": 0,
+      "workbook_protected": false,
+      "xlm_macros": false
+    },
+    "formula_count": 8,
+    "sha256": "f0223281c96685ed952855ab333c9451875819bd90248bedec0a290d53cec8ac",
+    "sheet_count": 5,
+    "sheets": [
+      {
+        "cells": 2,
+        "formulas": 0,
+        "hidden_columns": 0,
+        "hidden_rows": 0,
+        "index": 0,
+        "name": "Q1",
+        "protected": false,
+        "state": "visible",
+        "tables": [],
+        "used_range": "'Q1'!A1:B1"
+      },
+      {
+        "cells": 2,
+        "formulas": 0,
+        "hidden_columns": 0,
+        "hidden_rows": 0,
+        "index": 1,
+        "name": "Q2",
+        "protected": false,
+        "state": "visible",
+        "tables": [],
+        "used_range": "'Q2'!A1:B1"
+      },
+      {
+        "cells": 2,
+        "formulas": 0,
+        "hidden_columns": 0,
+        "hidden_rows": 0,
+        "index": 2,
+        "name": "Q3",
+        "protected": false,
+        "state": "visible",
+        "tables": [],
+        "used_range": "'Q3'!A1:B1"
+      },
+      {
+        "cells": 8,
+        "formulas": 3,
+        "hidden_columns": 0,
+        "hidden_rows": 0,
+        "index": 3,
+        "name": "It's Ünïcode",
+        "protected": false,
+        "state": "visible",
+        "tables": [],
+        "used_range": "'It''s Ünïcode'!A1:B5"
+      },
+      {
+        "cells": 20,
+        "formulas": 5,
+        "hidden_columns": 0,
+        "hidden_rows": 0,
+        "index": 4,
+        "name": "Orders",
+        "protected": false,
+        "state": "visible",
+        "tables": [
+          "Orders"
+        ],
+        "used_range": "Orders!A1:G4"
+      }
+    ],
+    "size_bytes": 11413,
+    "tables": 1
+  }
+}

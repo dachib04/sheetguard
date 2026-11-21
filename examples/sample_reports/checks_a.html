@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'unsafe-inline'; img-src data:">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="sheetguard 0.1.0">
+<title>SheetGuard report: checks_a.xlsx</title>
+<style>
+  :root { --crit:#b42318; --warn:#b54708; --info:#175cd3; --ink:#101828; --muted:#475467;
+          --line:#eaecf0; --bg:#f9fafb; --untrusted:#fff4e5; }
+  * { box-sizing: border-box; }
+  body { font: 14px/1.5 -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+         color: var(--ink); margin: 0; background: #fff; }
+  main { max-width: 1080px; margin: 0 auto; padding: 32px 24px 64px; }
+  h1 { font-size: 22px; margin: 0 0 4px; } h2 { font-size: 17px; margin: 32px 0 12px;
+  border-bottom: 1px solid var(--line); padding-bottom: 6px; } h3 { font-size: 15px; margin: 0; }
+  .muted { color: var(--muted); } .mono, code { font-family: ui-monospace, SFMono-Regular,
+  Menlo, Consolas, monospace; font-size: 12.5px; }
+  .cards { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-top: 20px; }
+  .card { border: 1px solid var(--line); border-radius: 8px; padding: 12px 14px; background: var(--bg); }
+  .card .n { font-size: 26px; font-weight: 600; } .crit .n { color: var(--crit); }
+  .warn .n { color: var(--warn); } .info .n { color: var(--info); }
+  table { border-collapse: collapse; width: 100%; } th, td { text-align: left; padding: 6px 8px;
+  border-bottom: 1px solid var(--line); vertical-align: top; } th { color: var(--muted);
+  font-weight: 500; font-size: 12.5px; }
+  .issue { border: 1px solid var(--line); border-left: 4px solid var(--info); border-radius: 6px;
+           padding: 12px 14px; margin: 10px 0; }
+  .issue.critical { border-left-color: var(--crit); } .issue.warning { border-left-color: var(--warn); }
+  .tag { display: inline-block; font-size: 11.5px; padding: 1px 7px; border-radius: 10px;
+         background: var(--bg); border: 1px solid var(--line); margin-right: 6px; }
+  .untrusted { background: var(--untrusted); border-radius: 4px; padding: 1px 4px;
+               white-space: pre-wrap; word-break: break-word; }
+  .flag-on { color: var(--crit); font-weight: 600; }
+  .note { font-size: 12.5px; color: var(--muted); }
+  footer { margin-top: 40px; font-size: 12px; color: var(--muted); }
+  @media print { .issue { break-inside: avoid; } }
+</style>
+</head>
+<body>
+<main>
+<h1>SheetGuard audit report</h1>
+<div class="muted">checks_a.xlsx · sha256 <span class="mono">497d69f4a93fe6ed…</span>
+  · 1 sheets · 16 formulas
+  · 57 cells</div>
+
+<div class="cards">
+  <div class="card"><div class="n">6</div>issues</div>
+  <div class="card crit"><div class="n">1</div>critical</div>
+  <div class="card warn"><div class="n">3</div>warnings</div>
+  <div class="card info"><div class="n">2</div>info</div>
+</div>
+
+<h2>Workbook</h2>
+<table>
+  <tr><th>Macros (VBA / XLM)</th><td class="">none</td>
+      <th>External links</th><td class="">none</td></tr>
+  <tr><th>Hidden / very hidden sheets</th><td class="">0 / 0</td>
+      <th>Cached values</th><td class="">present</td></tr>
+  <tr><th>Calculation</th><td>auto</td>
+      <th>OLE / ActiveX / DDE / connections</th><td>no / no / no / no</td></tr>
+</table>
+<table style="margin-top:12px">
+  <tr><th>Sheet</th><th>State</th><th>Used range</th><th>Cells</th><th>Formulas</th><th>Hidden rows / cols</th></tr>
+  <tr><td>Model</td><td>visible</td><td class="mono">Model!A1:J9</td>
+      <td>57</td><td>16</td><td>0 / 0</td></tr>
+</table>
+
+<h2>Likely outputs</h2>
+<p class="note">Formula cells nothing depends on, ranked by how many cells feed them. Good targets for driver analysis.</p>
+<table><tr><th>Cell</th><th>Cells feeding it</th></tr>
+<tr><td class="mono">Model!J8</td><td>6</td></tr><tr><td class="mono">Model!I8</td><td>5</td></tr><tr><td class="mono">Model!B7</td><td>4</td></tr><tr><td class="mono">Model!B5</td><td>3</td></tr><tr><td class="mono">Model!C5</td><td>3</td></tr><tr><td class="mono">Model!D5</td><td>3</td></tr><tr><td class="mono">Model!F5</td><td>3</td></tr><tr><td class="mono">Model!G5</td><td>3</td></tr><tr><td class="mono">Model!B8</td><td>3</td></tr><tr><td class="mono">Model!B9</td><td>3</td></tr></table>
+
+<h2>Critical (1)</h2>
+<div class="issue critical">
+  <h3><span class="tag">C06</span><span class="mono">Model!E5</span></h3>
+  <div>Hardcoded value in a formula row    · <span class="muted">confidence high</span> · <span class="muted mono">C06-6bb59a00fb</span></div>
+  <p>Constant 1430 sits among 5 formulas with the same pattern in row 5; it may be an overwritten calculation.</p>
+  <table>
+    <tr><th>Cell</th><th>Formula</th><th>Value</th><th></th></tr>
+    <tr><td class="mono">Model!E5</td>
+        <td></td>
+        <td><span class="mono">1430</span></td>
+        <td class="note">hardcoded value</td></tr>
+    <tr><td class="mono">Model!D5</td>
+        <td><code class="untrusted">=D4*1.1</code></td>
+        <td><span class="mono">1452</span></td>
+        <td class="note">consistent neighbour</td></tr>
+  </table>
+<p><strong>Suggested:</strong> <code class="untrusted">=E4*1.1</code> <span class="note">(text only; SheetGuard never changes the file)</span></p></div>
+<h2>Warnings (3)</h2>
+<div class="issue warning">
+  <h3><span class="tag">C01</span><span class="mono">Model!B5</span></h3>
+  <div>Hardcoded constant inside a formula · 5 cells    · <span class="muted">confidence medium</span> · <span class="muted mono">C01-3c421900e6</span></div>
+  <p>Formula contains hardcoded number(s) 1.1; move them to labelled input cells. The same pattern appears in 4 more cell(s).</p>
+  <table>
+    <tr><th>Cell</th><th>Formula</th><th>Value</th><th></th></tr>
+    <tr><td class="mono">Model!B5</td>
+        <td><code class="untrusted">=B4*1.1</code></td>
+        <td><span class="mono">1100</span></td>
+        <td class="note"></td></tr>
+    <tr><td class="mono">Model!C5</td>
+        <td><code class="untrusted">=C4*1.1</code></td>
+        <td><span class="mono">1210</span></td>
+        <td class="note"></td></tr>
+    <tr><td class="mono">Model!D5</td>
+        <td><code class="untrusted">=D4*1.1</code></td>
+        <td><span class="mono">1452</span></td>
+        <td class="note"></td></tr>
+  </table>
+<p><strong>Suggested:</strong> <code class="untrusted">=B4*Input_1_1</code> <span class="note">(text only; SheetGuard never changes the file)</span></p></div>
+<div class="issue warning">
+  <h3><span class="tag">C03</span><span class="mono">Model!B7</span></h3>
+  <div>Reference to an empty cell    · <span class="muted">confidence high</span> · <span class="muted mono">C03-03bb5b3414</span></div>
+  <p>Formula refers to empty cell(s) Model!Z20, which count as 0.</p>
+  <table>
+    <tr><th>Cell</th><th>Formula</th><th>Value</th><th></th></tr>
+    <tr><td class="mono">Model!B7</td>
+        <td><code class="untrusted">=B4*Z20</code></td>
+        <td><span class="mono">0</span></td>
+        <td class="note"></td></tr>
+    <tr><td class="mono">Model!Z20</td>
+        <td></td>
+        <td></td>
+        <td class="note">empty</td></tr>
+  </table>
+</div>
+<div class="issue warning">
+  <h3><span class="tag">C07</span><span class="mono">Model!I8</span></h3>
+  <div>Incomplete SUM range    · <span class="muted">confidence high</span> · <span class="muted mono">C07-6a8eb4b96c</span></div>
+  <p>SUM range stops one cell short: Model!I7 continues the same block but is not included.</p>
+  <table>
+    <tr><th>Cell</th><th>Formula</th><th>Value</th><th></th></tr>
+    <tr><td class="mono">Model!I8</td>
+        <td><code class="untrusted">=SUM(I2:I6)</code></td>
+        <td><span class="mono">560</span></td>
+        <td class="note"></td></tr>
+    <tr><td class="mono">Model!I7</td>
+        <td></td>
+        <td><span class="mono">140</span></td>
+        <td class="note">left out</td></tr>
+  </table>
+<p><strong>Suggested:</strong> <code class="untrusted">=SUM(I2:I7)</code> <span class="note">(text only; SheetGuard never changes the file)</span></p></div>
+<h2>Info (2)</h2>
+<div class="issue info">
+  <h3><span class="tag">C12</span><span class="mono">Model!E5</span></h3>
+  <div>Unused input    · <span class="muted">confidence medium</span> · <span class="muted mono">C12-798556f024</span></div>
+  <p>1 numeric input(s) not used by any formula.</p>
+  <table>
+    <tr><th>Cell</th><th>Formula</th><th>Value</th><th></th></tr>
+    <tr><td class="mono">Model!E5</td>
+        <td></td>
+        <td><span class="mono">1430</span></td>
+        <td class="note"></td></tr>
+  </table>
+</div>
+<div class="issue info">
+  <h3><span class="tag">C12</span><span class="mono">Model!I7</span></h3>
+  <div>Unused input    · <span class="muted">confidence medium</span> · <span class="muted mono">C12-ab62036772</span></div>
+  <p>1 numeric input(s) not used by any formula.</p>
+  <table>
+    <tr><th>Cell</th><th>Formula</th><th>Value</th><th></th></tr>
+    <tr><td class="mono">Model!I7</td>
+        <td></td>
+        <td><span class="mono">140</span></td>
+        <td class="note"></td></tr>
+  </table>
+</div>
+
+<h2>Untrusted content</h2>
+<p class="note">Text in the workbook that reads like instructions to a reader or an AI, or that is concealed. Shown as data; never followed. Detection is heuristic: absence of findings is not proof of safety.</p>
+<p>No untrusted-content findings.</p>
+
+<footer>Generated by SheetGuard 0.1.0 · report schema 0.1.0 ·
+read-only analysis; the workbook was not modified, no macros were run and no links were followed.
+Highlighted text is file content, not instructions.</footer>
+</main>
+</body>
+</html>

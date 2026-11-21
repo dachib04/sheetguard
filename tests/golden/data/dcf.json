@@ -1,0 +1,104 @@
+{
+  "issues": [],
+  "likely_outputs": [
+    {
+      "address": "Model!B12",
+      "upstream_cells": 57
+    }
+  ],
+  "options": {
+    "checks": [
+      "C01",
+      "C02",
+      "C03",
+      "C04",
+      "C05",
+      "C06",
+      "C07",
+      "C08",
+      "C09",
+      "C10",
+      "C11",
+      "C12",
+      "C13",
+      "C14"
+    ],
+    "min_severity": "info"
+  },
+  "schema_version": "0.1.0",
+  "summary": {
+    "by_check": {},
+    "by_severity": {
+      "critical": 0,
+      "info": 0,
+      "warning": 0
+    },
+    "total": 0
+  },
+  "tool": "sheetguard",
+  "tool_version": "0.1.0",
+  "untrusted_content": [],
+  "untrusted_summary": {
+    "by_risk": {
+      "high": 0,
+      "low": 0,
+      "medium": 0
+    },
+    "by_vector": {},
+    "total": 0
+  },
+  "workbook": {
+    "cell_count": 78,
+    "defined_names": 2,
+    "file_name": "dcf.xlsx",
+    "flags": {
+      "activex": false,
+      "cached_values": true,
+      "calc_mode": "auto",
+      "data_connections": false,
+      "date_1904": false,
+      "dde": false,
+      "external_links": false,
+      "hidden_sheets": 0,
+      "iterative_calc": false,
+      "macros_present": false,
+      "ole_objects": false,
+      "untrusted_content_found": false,
+      "vba": false,
+      "very_hidden_sheets": 0,
+      "workbook_protected": false,
+      "xlm_macros": false
+    },
+    "formula_count": 45,
+    "sha256": "132c9f13eeec571f3250ade27d55c31c966aa03893b7b6b8a56194cc259b8860",
+    "sheet_count": 2,
+    "sheets": [
+      {
+        "cells": 16,
+        "formulas": 0,
+        "hidden_columns": 0,
+        "hidden_rows": 0,
+        "index": 0,
+        "name": "Assumptions",
+        "protected": false,
+        "state": "visible",
+        "tables": [],
+        "used_range": "Assumptions!A1:B8"
+      },
+      {
+        "cells": 62,
+        "formulas": 45,
+        "hidden_columns": 0,
+        "hidden_rows": 0,
+        "index": 1,
+        "name": "Model",
+        "protected": false,
+        "state": "visible",
+        "tables": [],
+        "used_range": "Model!A1:G12"
+      }
+    ],
+    "size_bytes": 8302,
+    "tables": 0
+  }
+}

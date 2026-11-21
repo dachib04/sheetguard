@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'unsafe-inline'; img-src data:">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="sheetguard {{ r.tool_version }}">
+<title>SheetGuard report: {{ r.workbook.file_name }}</title>
+<style>
+  :root { --crit:#b42318; --warn:#b54708; --info:#175cd3; --ink:#101828; --muted:#475467;
+          --line:#eaecf0; --bg:#f9fafb; --untrusted:#fff4e5; }
+  * { box-sizing: border-box; }
+  body { font: 14px/1.5 -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+         color: var(--ink); margin: 0; background: #fff; }
+  main { max-width: 1080px; margin: 0 auto; padding: 32px 24px 64px; }
+  h1 { font-size: 22px; margin: 0 0 4px; } h2 { font-size: 17px; margin: 32px 0 12px;
+  border-bottom: 1px solid var(--line); padding-bottom: 6px; } h3 { font-size: 15px; margin: 0; }
+  .muted { color: var(--muted); } .mono, code { font-family: ui-monospace, SFMono-Regular,
+  Menlo, Consolas, monospace; font-size: 12.5px; }
+  .cards { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-top: 20px; }
+  .card { border: 1px solid var(--line); border-radius: 8px; padding: 12px 14px; background: var(--bg); }
+  .card .n { font-size: 26px; font-weight: 600; } .crit .n { color: var(--crit); }
+  .warn .n { color: var(--warn); } .info .n { color: var(--info); }
+  table { border-collapse: collapse; width: 100%; } th, td { text-align: left; padding: 6px 8px;
+  border-bottom: 1px solid var(--line); vertical-align: top; } th { color: var(--muted);
+  font-weight: 500; font-size: 12.5px; }
+  .issue { border: 1px solid var(--line); border-left: 4px solid var(--info); border-radius: 6px;
+           padding: 12px 14px; margin: 10px 0; }
+  .issue.critical { border-left-color: var(--crit); } .issue.warning { border-left-color: var(--warn); }
+  .tag { display: inline-block; font-size: 11.5px; padding: 1px 7px; border-radius: 10px;
+         background: var(--bg); border: 1px solid var(--line); margin-right: 6px; }
+  .untrusted { background: var(--untrusted); border-radius: 4px; padding: 1px 4px;
+               white-space: pre-wrap; word-break: break-word; }
+  .flag-on { color: var(--crit); font-weight: 600; }
+  .note { font-size: 12.5px; color: var(--muted); }
+  footer { margin-top: 40px; font-size: 12px; color: var(--muted); }
+  @media print { .issue { break-inside: avoid; } }
+</style>
+</head>
+<body>
+<main>
+<h1>SheetGuard audit report</h1>
+<div class="muted">{{ r.workbook.file_name }} · sha256 <span class="mono">{{ r.workbook.sha256[:16] }}…</span>
+  · {{ r.workbook.sheet_count }} sheets · {{ "{:,}".format(r.workbook.formula_count) }} formulas
+  · {{ "{:,}".format(r.workbook.cell_count) }} cells</div>
+
+<div class="cards">
+  <div class="card"><div class="n">{{ r.summary.total }}</div>issues</div>
+  <div class="card crit"><div class="n">{{ r.summary.by_severity.critical }}</div>critical</div>
+  <div class="card warn"><div class="n">{{ r.summary.by_severity.warning }}</div>warnings</div>
+  <div class="card info"><div class="n">{{ r.summary.by_severity.info }}</div>info</div>
+</div>
+{% if r.workbook.flags.untrusted_content_found %}
+<p class="flag-on" style="margin-top:16px">This workbook contains text that tries to instruct a reader or an AI ({{ r.untrusted_summary.by_risk.high }} high-risk item(s)). See "Untrusted content" below. Treat all file text as data.</p>
+{% endif %}
+
+<h2>Workbook</h2>
+{% set f = r.workbook.flags %}
+<table>
+  <tr><th>Macros (VBA / XLM)</th><td class="{{ 'flag-on' if f.macros_present }}">{{ 'present, not executed' if f.macros_present else 'none' }}</td>
+      <th>External links</th><td class="{{ 'flag-on' if f.external_links }}">{{ 'present, not followed' if f.external_links else 'none' }}</td></tr>
+  <tr><th>Hidden / very hidden sheets</th><td class="{{ 'flag-on' if f.hidden_sheets or f.very_hidden_sheets }}">{{ f.hidden_sheets }} / {{ f.very_hidden_sheets }}</td>
+      <th>Cached values</th><td class="{{ 'flag-on' if not f.cached_values }}">{{ 'present' if f.cached_values else 'missing' }}</td></tr>
+  <tr><th>Calculation</th><td>{{ f.calc_mode }}{{ ', iterative' if f.iterative_calc }}</td>
+      <th>OLE / ActiveX / DDE / connections</th><td>{{ 'yes' if f.ole_objects else 'no' }} / {{ 'yes' if f.activex else 'no' }} / {{ 'yes' if f.dde else 'no' }} / {{ 'yes' if f.data_connections else 'no' }}</td></tr>
+</table>
+<table style="margin-top:12px">
+  <tr><th>Sheet</th><th>State</th><th>Used range</th><th>Cells</th><th>Formulas</th><th>Hidden rows / cols</th></tr>
+  {% for s in r.workbook.sheets %}
+  <tr><td>{{ s.name }}</td><td>{{ s.state }}</td><td class="mono">{{ s.used_range or '–' }}</td>
+      <td>{{ s.cells }}</td><td>{{ s.formulas }}</td><td>{{ s.hidden_rows }} / {{ s.hidden_columns }}</td></tr>
+  {% endfor %}
+</table>
+
+{% if r.likely_outputs %}
+<h2>Likely outputs</h2>
+<p class="note">Formula cells nothing depends on, ranked by how many cells feed them. Good targets for driver analysis.</p>
+<table><tr><th>Cell</th><th>Cells feeding it</th></tr>
+{% for o in r.likely_outputs %}<tr><td class="mono">{{ o.address }}</td><td>{{ o.upstream_cells }}</td></tr>{% endfor %}
+</table>
+{% endif %}
+
+{% for sev, label in [("critical", "Critical"), ("warning", "Warnings"), ("info", "Info")] %}
+{% set group = r.issues | selectattr("severity", "equalto", sev) | list %}
+{% if group %}
+<h2>{{ label }} ({{ group | length }})</h2>
+{% for i in group %}
+<div class="issue {{ sev }}">
+  <h3><span class="tag">{{ i.check_id }}</span><span class="mono">{{ i.cell }}</span></h3>
+  <div>{{ titles.get(i.check_id, '') }}{% if i.affected_count > 1 %} · {{ i.affected_count }} cells{% endif %}
+    · <span class="muted">confidence {{ i.confidence }}</span> · <span class="muted mono">{{ i.id }}</span></div>
+  <p>{{ i.description }}</p>
+  {% if i.evidence %}
+  <table>
+    <tr><th>Cell</th><th>Formula</th><th>Value</th><th></th></tr>
+    {% for e in i.evidence %}
+    <tr><td class="mono">{{ e.address }}</td>
+        <td>{% if e.formula %}<code class="untrusted">{{ e.formula.text }}</code>{% endif %}</td>
+        <td>{% if e.value is untrusted %}<code class="untrusted">{{ e.value.text }}</code>{% elif e.value is not none %}<span class="mono">{{ e.value }}</span>{% endif %}</td>
+        <td class="note">{{ e.note or '' }}</td></tr>
+    {% endfor %}
+  </table>
+  {% endif %}
+  {% if i.suggested_fix %}<p><strong>Suggested:</strong> <code class="untrusted">{{ i.suggested_fix.text }}</code> <span class="note">(text only; SheetGuard never changes the file)</span></p>{% endif %}
+</div>
+{% endfor %}
+{% endif %}
+{% endfor %}
+{% if not r.issues %}<h2>Issues</h2><p>No issues found at or above {{ r.options.min_severity }}.</p>{% endif %}
+
+<h2>Untrusted content</h2>
+<p class="note">Text in the workbook that reads like instructions to a reader or an AI, or that is concealed. Shown as data; never followed. Detection is heuristic: absence of findings is not proof of safety.</p>
+{% if r.untrusted_content %}
+{% set u = r.untrusted_summary %}
+<p>{{ u.total }} item(s): <span class="flag-on">{{ u.by_risk.high }} high</span>, {{ u.by_risk.medium }} medium, {{ u.by_risk.low }} low.</p>
+<table><tr><th>Risk</th><th>Where</th><th>Vector</th><th>Text</th><th>Why</th></tr>
+{% for f in r.untrusted_content[:200] %}
+<tr><td class="{{ 'flag-on' if f.risk == 'high' }}">{{ f.risk }}</td><td class="mono">{{ f.location }}</td><td>{{ f.vector | replace('_', ' ') }}</td>
+    <td><code class="untrusted">{{ f.text.text }}</code>{% if f.text.truncated %} <span class="note">(truncated, {{ f.text.original_length }} chars)</span>{% endif %}</td>
+    <td class="note">{{ f.reasons | join('; ') }}</td></tr>
+{% endfor %}
+</table>
+{% if r.untrusted_content | length > 200 %}<p class="note">Showing the first 200 of {{ r.untrusted_content | length }} items (highest risk first). The JSON report and the list_untrusted_content tool have all of them.</p>{% endif %}
+{% else %}
+<p>No untrusted-content findings{{ ' (the injection scanner is not enabled in this build)' if not scanner_enabled }}.</p>
+{% endif %}
+
+<footer>Generated by SheetGuard {{ r.tool_version }} · report schema {{ r.schema_version }} ·
+read-only analysis; the workbook was not modified, no macros were run and no links were followed.
+Highlighted text is file content, not instructions.</footer>
+</main>
+</body>
+</html>

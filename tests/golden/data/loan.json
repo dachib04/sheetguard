@@ -1,0 +1,116 @@
+{
+  "issues": [],
+  "likely_outputs": [
+    {
+      "address": "Schedule!F61",
+      "upstream_cells": 303
+    },
+    {
+      "address": "Schedule!E63",
+      "upstream_cells": 303
+    },
+    {
+      "address": "Schedule!C63",
+      "upstream_cells": 301
+    },
+    {
+      "address": "Schedule!D63",
+      "upstream_cells": 64
+    }
+  ],
+  "options": {
+    "checks": [
+      "C01",
+      "C02",
+      "C03",
+      "C04",
+      "C05",
+      "C06",
+      "C07",
+      "C08",
+      "C09",
+      "C10",
+      "C11",
+      "C12",
+      "C13",
+      "C14"
+    ],
+    "min_severity": "info"
+  },
+  "schema_version": "0.1.0",
+  "summary": {
+    "by_check": {},
+    "by_severity": {
+      "critical": 0,
+      "info": 0,
+      "warning": 0
+    },
+    "total": 0
+  },
+  "tool": "sheetguard",
+  "tool_version": "0.1.0",
+  "untrusted_content": [],
+  "untrusted_summary": {
+    "by_risk": {
+      "high": 0,
+      "low": 0,
+      "medium": 0
+    },
+    "by_vector": {},
+    "total": 0
+  },
+  "workbook": {
+    "cell_count": 378,
+    "defined_names": 0,
+    "file_name": "loan.xlsx",
+    "flags": {
+      "activex": false,
+      "cached_values": true,
+      "calc_mode": "auto",
+      "data_connections": false,
+      "date_1904": false,
+      "dde": false,
+      "external_links": false,
+      "hidden_sheets": 0,
+      "iterative_calc": false,
+      "macros_present": false,
+      "ole_objects": false,
+      "untrusted_content_found": false,
+      "vba": false,
+      "very_hidden_sheets": 0,
+      "workbook_protected": false,
+      "xlm_macros": false
+    },
+    "formula_count": 304,
+    "sha256": "735a1864449841f5f296a966dd958bd38d2d27ea34c422a7fd2106b45684a254",
+    "sheet_count": 2,
+    "sheets": [
+      {
+        "cells": 8,
+        "formulas": 1,
+        "hidden_columns": 0,
+        "hidden_rows": 0,
+        "index": 0,
+        "name": "Inputs",
+        "protected": false,
+        "state": "visible",
+        "tables": [],
+        "used_range": "Inputs!A1:B4"
+      },
+      {
+        "cells": 370,
+        "formulas": 303,
+        "hidden_columns": 0,
+        "hidden_rows": 0,
+        "index": 1,
+        "name": "Schedule",
+        "protected": false,
+        "state": "visible",
+        "tables": [],
+        "used_range": "Schedule!A1:F63"
+      }
+    ],
+    "size_bytes": 11978,
+    "tables": 0
+  }
+}

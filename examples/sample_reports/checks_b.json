@@ -1,0 +1,438 @@
+{
+  "issues": [
+    {
+      "affected_count": 11,
+      "cell": "(workbook)",
+      "check_id": "C13",
+      "confidence": "high",
+      "description": "None of the 11 formulas has a cached value: the file was probably written by a script and never calculated. Values shown are not reliable.",
+      "evidence": [],
+      "id": "C13-3ccc2d670a",
+      "severity": "warning",
+      "sheet": "Report",
+      "suggested_fix": null
+    },
+    {
+      "affected_count": 1,
+      "cell": "Report!B1",
+      "check_id": "C08",
+      "confidence": "high",
+      "description": "Formula refers to another workbook; values may be stale and the link is not followed.",
+      "evidence": [
+        {
+          "address": "Report!B1",
+          "formula": {
+            "flags": [],
+            "kind": "untrusted_text",
+            "original_length": null,
+            "risk": "none",
+            "source": "Report!B1 (formula)",
+            "text": "=[1]Rates!B2",
+            "truncated": false
+          },
+          "note": null,
+          "value": null
+        }
+      ],
+      "id": "C08-ec1ee776bc",
+      "severity": "warning",
+      "sheet": "Report",
+      "suggested_fix": null
+    },
+    {
+      "affected_count": 1,
+      "cell": "Report!B10",
+      "check_id": "C11",
+      "confidence": "high",
+      "description": "1 cell(s) in a hidden row 10 feed other calculations (1 formula(s), 0 input(s)).",
+      "evidence": [
+        {
+          "address": "Report!B10",
+          "formula": {
+            "flags": [],
+            "kind": "untrusted_text",
+            "original_length": null,
+            "risk": "none",
+            "source": "Report!B10 (formula)",
+            "text": "=B6*2",
+            "truncated": false
+          },
+          "note": null,
+          "value": null
+        }
+      ],
+      "id": "C11-a515822c8e",
+      "severity": "warning",
+      "sheet": "Report",
+      "suggested_fix": null
+    },
+    {
+      "affected_count": 1,
+      "cell": "Data!B2",
+      "check_id": "C14",
+      "confidence": "high",
+      "description": "1 number(s) stored as text are used by formulas; SUM and similar functions ignore them.",
+      "evidence": [
+        {
+          "address": "Data!B2",
+          "formula": null,
+          "note": null,
+          "value": {
+            "flags": [],
+            "kind": "untrusted_text",
+            "original_length": null,
+            "risk": "none",
+            "source": "Data!B2 (cell text)",
+            "text": "1,250.50",
+            "truncated": false
+          }
+        }
+      ],
+      "id": "C14-367c0531d9",
+      "severity": "warning",
+      "sheet": "Data",
+      "suggested_fix": {
+        "flags": [],
+        "kind": "untrusted_text",
+        "original_length": null,
+        "risk": "none",
+        "source": "numeric value for Data!B2",
+        "text": "1250.5",
+        "truncated": false
+      }
+    },
+    {
+      "affected_count": 1,
+      "cell": "Data!B4",
+      "check_id": "C14",
+      "confidence": "high",
+      "description": "1 number(s) stored as text are used by formulas; SUM and similar functions ignore them.",
+      "evidence": [
+        {
+          "address": "Data!B4",
+          "formula": null,
+          "note": null,
+          "value": {
+            "flags": [],
+            "kind": "untrusted_text",
+            "original_length": null,
+            "risk": "none",
+            "source": "Data!B4 (cell text)",
+            "text": "$2,000",
+            "truncated": false
+          }
+        }
+      ],
+      "id": "C14-5148b57a01",
+      "severity": "warning",
+      "sheet": "Data",
+      "suggested_fix": {
+        "flags": [],
+        "kind": "untrusted_text",
+        "original_length": null,
+        "risk": "none",
+        "source": "numeric value for Data!B4",
+        "text": "2000",
+        "truncated": false
+      }
+    },
+    {
+      "affected_count": 1,
+      "cell": "Calc!A1",
+      "check_id": "C01",
+      "confidence": "medium",
+      "description": "Formula contains hardcoded number(s) 0.5; move them to labelled input cells.",
+      "evidence": [
+        {
+          "address": "Calc!A1",
+          "formula": {
+            "flags": [],
+            "kind": "untrusted_text",
+            "original_length": null,
+            "risk": "none",
+            "source": "Calc!A1 (formula)",
+            "text": "=Report!B6*0.5",
+            "truncated": false
+          },
+          "note": null,
+          "value": null
+        }
+      ],
+      "id": "C01-4b97d88709",
+      "severity": "warning",
+      "sheet": "Calc",
+      "suggested_fix": {
+        "flags": [],
+        "kind": "untrusted_text",
+        "original_length": null,
+        "risk": "none",
+        "source": "suggested formula for Calc!A1 (after creating a named input Input_0_5 = 0.5)",
+        "text": "=Report!B6*Input_0_5",
+        "truncated": false
+      }
+    },
+    {
+      "affected_count": 2,
+      "cell": "Calc!A1",
+      "check_id": "C11",
+      "confidence": "high",
+      "description": "2 cell(s) in a hidden sheet feed other calculations (2 formula(s), 0 input(s)).",
+      "evidence": [
+        {
+          "address": "Calc!A1",
+          "formula": {
+            "flags": [],
+            "kind": "untrusted_text",
+            "original_length": null,
+            "risk": "none",
+            "source": "Calc!A1 (formula)",
+            "text": "=Report!B6*0.5",
+            "truncated": false
+          },
+          "note": null,
+          "value": null
+        },
+        {
+          "address": "Calc!A2",
+          "formula": {
+            "flags": [],
+            "kind": "untrusted_text",
+            "original_length": null,
+            "risk": "none",
+            "source": "Calc!A2 (formula)",
+            "text": "=A1+Report!B1",
+            "truncated": false
+          },
+          "note": null,
+          "value": null
+        }
+      ],
+      "id": "C11-e9f51a541f",
+      "severity": "warning",
+      "sheet": "Calc",
+      "suggested_fix": null
+    },
+    {
+      "affected_count": 1,
+      "cell": "Report!B2",
+      "check_id": "C09",
+      "confidence": "high",
+      "description": "Uses TODAY. Its result changes every time the workbook recalculates.",
+      "evidence": [
+        {
+          "address": "Report!B2",
+          "formula": {
+            "flags": [],
+            "kind": "untrusted_text",
+            "original_length": null,
+            "risk": "none",
+            "source": "Report!B2 (formula)",
+            "text": "=TODAY()",
+            "truncated": false
+          },
+          "note": null,
+          "value": null
+        }
+      ],
+      "id": "C09-a7445a8d32",
+      "severity": "info",
+      "sheet": "Report",
+      "suggested_fix": null
+    },
+    {
+      "affected_count": 1,
+      "cell": "Report!B3",
+      "check_id": "C09",
+      "confidence": "high",
+      "description": "Uses INDIRECT. Its references are built at run time, so traces through it are partial.",
+      "evidence": [
+        {
+          "address": "Report!B3",
+          "formula": {
+            "flags": [],
+            "kind": "untrusted_text",
+            "original_length": null,
+            "risk": "none",
+            "source": "Report!B3 (formula)",
+            "text": "=INDIRECT(\"Data!B\"&2)",
+            "truncated": false
+          },
+          "note": null,
+          "value": null
+        }
+      ],
+      "id": "C09-1d140551a2",
+      "severity": "info",
+      "sheet": "Report",
+      "suggested_fix": null
+    },
+    {
+      "affected_count": 1,
+      "cell": "Report!B4",
+      "check_id": "C10",
+      "confidence": "low",
+      "description": "Percent-formatted value above 100%: it may have been typed as a whole number (25 instead of 25%).",
+      "evidence": [
+        {
+          "address": "Report!B4",
+          "formula": null,
+          "note": null,
+          "value": 15
+        }
+      ],
+      "id": "C10-e13453c647",
+      "severity": "info",
+      "sheet": "Report",
+      "suggested_fix": null
+    },
+    {
+      "affected_count": 1,
+      "cell": "Report!B7",
+      "check_id": "C12",
+      "confidence": "medium",
+      "description": "1 numeric input(s) ('Unused assumption') not used by any formula.",
+      "evidence": [
+        {
+          "address": "Report!B7",
+          "formula": null,
+          "note": null,
+          "value": 0.07
+        }
+      ],
+      "id": "C12-08ad2b7d7a",
+      "severity": "info",
+      "sheet": "Report",
+      "suggested_fix": null
+    }
+  ],
+  "likely_outputs": [
+    {
+      "address": "Report!B8",
+      "upstream_cells": 8
+    },
+    {
+      "address": "Report!B5",
+      "upstream_cells": 6
+    },
+    {
+      "address": "Report!B11",
+      "upstream_cells": 6
+    }
+  ],
+  "options": {
+    "checks": [
+      "C01",
+      "C02",
+      "C03",
+      "C04",
+      "C05",
+      "C06",
+      "C07",
+      "C08",
+      "C09",
+      "C10",
+      "C11",
+      "C12",
+      "C13",
+      "C14"
+    ],
+    "min_severity": "info"
+  },
+  "schema_version": "0.1.0",
+  "summary": {
+    "by_check": {
+      "C01": 1,
+      "C08": 1,
+      "C09": 2,
+      "C10": 1,
+      "C11": 2,
+      "C12": 1,
+      "C13": 1,
+      "C14": 2
+    },
+    "by_severity": {
+      "critical": 0,
+      "info": 4,
+      "warning": 7
+    },
+    "total": 11
+  },
+  "tool": "sheetguard",
+  "tool_version": "0.1.0",
+  "untrusted_content": [],
+  "untrusted_summary": {
+    "by_risk": {
+      "high": 0,
+      "low": 0,
+      "medium": 0
+    },
+    "by_vector": {},
+    "total": 0
+  },
+  "workbook": {
+    "cell_count": 31,
+    "defined_names": 0,
+    "file_name": "checks_b.xlsx",
+    "flags": {
+      "activex": false,
+      "cached_values": false,
+      "calc_mode": "auto",
+      "data_connections": false,
+      "date_1904": false,
+      "dde": false,
+      "external_links": true,
+      "hidden_sheets": 1,
+      "iterative_calc": false,
+      "macros_present": false,
+      "ole_objects": false,
+      "untrusted_content_found": false,
+      "vba": false,
+      "very_hidden_sheets": 0,
+      "workbook_protected": false,
+      "xlm_macros": false
+    },
+    "formula_count": 11,
+    "sha256": "79d62dbcca59fbf872deb2f8b5cf9cb164201f8fca6c3a55347e212a64a5bfeb",
+    "sheet_count": 3,
+    "sheets": [
+      {
+        "cells": 17,
+        "formulas": 8,
+        "hidden_columns": 0,
+        "hidden_rows": 1,
+        "index": 0,
+        "name": "Report",
+        "protected": false,
+        "state": "visible",
+        "tables": [],
+        "used_range": "Report!A1:B11"
+      },
+      {
+        "cells": 12,
+        "formulas": 1,
+        "hidden_columns": 0,
+        "hidden_rows": 0,
+        "index": 1,
+        "name": "Data",
+        "protected": false,
+        "state": "visible",
+        "tables": [],
+        "used_range": "Data!A1:D5"
+      },
+      {
+        "cells": 2,
+        "formulas": 2,
+        "hidden_columns": 0,
+        "hidden_rows": 0,
+        "index": 2,
+        "name": "Calc",
+        "protected": false,
+        "state": "hidden",
+        "tables": [],
+        "used_range": "Calc!A1:A2"
+      }
+    ],
+    "size_bytes": 6189,
+    "tables": 0
+  }
+}

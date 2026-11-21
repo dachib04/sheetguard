@@ -1,0 +1,112 @@
+{
+  "issues": [],
+  "likely_outputs": [
+    {
+      "address": "'Cap table'!D8",
+      "upstream_cells": 11
+    },
+    {
+      "address": "Round!B6",
+      "upstream_cells": 10
+    },
+    {
+      "address": "Round!B3",
+      "upstream_cells": 2
+    }
+  ],
+  "options": {
+    "checks": [
+      "C01",
+      "C02",
+      "C03",
+      "C04",
+      "C05",
+      "C06",
+      "C07",
+      "C08",
+      "C09",
+      "C10",
+      "C11",
+      "C12",
+      "C13",
+      "C14"
+    ],
+    "min_severity": "info"
+  },
+  "schema_version": "0.1.0",
+  "summary": {
+    "by_check": {},
+    "by_severity": {
+      "critical": 0,
+      "info": 0,
+      "warning": 0
+    },
+    "total": 0
+  },
+  "tool": "sheetguard",
+  "tool_version": "0.1.0",
+  "untrusted_content": [],
+  "untrusted_summary": {
+    "by_risk": {
+      "high": 0,
+      "low": 0,
+      "medium": 0
+    },
+    "by_vector": {},
+    "total": 0
+  },
+  "workbook": {
+    "cell_count": 39,
+    "defined_names": 0,
+    "file_name": "captable.xlsx",
+    "flags": {
+      "activex": false,
+      "cached_values": true,
+      "calc_mode": "auto",
+      "data_connections": false,
+      "date_1904": false,
+      "dde": false,
+      "external_links": false,
+      "hidden_sheets": 0,
+      "iterative_calc": false,
+      "macros_present": false,
+      "ole_objects": false,
+      "untrusted_content_found": false,
+      "vba": false,
+      "very_hidden_sheets": 0,
+      "workbook_protected": false,
+      "xlm_macros": false
+    },
+    "formula_count": 11,
+    "sha256": "f9fd2f206427660ce5de8fa374592c6c060e81d212e4f5e45c1cbc3767abd7fa",
+    "sheet_count": 2,
+    "sheets": [
+      {
+        "cells": 27,
+        "formulas": 7,
+        "hidden_columns": 0,
+        "hidden_rows": 0,
+        "index": 0,
+        "name": "Cap table",
+        "protected": false,
+        "state": "visible",
+        "tables": [],
+        "used_range": "'Cap table'!A1:D8"
+      },
+      {
+        "cells": 12,
+        "formulas": 4,
+        "hidden_columns": 0,
+        "hidden_rows": 0,
+        "index": 1,
+        "name": "Round",
+        "protected": false,
+        "state": "visible",
+        "tables": [],
+        "used_range": "Round!A1:B6"
+      }
+    ],
+    "size_bytes": 7553,
+    "tables": 0
+  }
+}

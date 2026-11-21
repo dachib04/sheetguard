@@ -1,0 +1,351 @@
+{
+  "issues": [
+    {
+      "affected_count": 1,
+      "cell": "Model!E5",
+      "check_id": "C06",
+      "confidence": "high",
+      "description": "Constant 1430 sits among 5 formulas with the same pattern in row 5; it may be an overwritten calculation.",
+      "evidence": [
+        {
+          "address": "Model!E5",
+          "formula": null,
+          "note": "hardcoded value",
+          "value": 1430
+        },
+        {
+          "address": "Model!D5",
+          "formula": {
+            "flags": [],
+            "kind": "untrusted_text",
+            "original_length": null,
+            "risk": "none",
+            "source": "Model!D5 (formula)",
+            "text": "=D4*1.1",
+            "truncated": false
+          },
+          "note": "consistent neighbour",
+          "value": 1452
+        }
+      ],
+      "id": "C06-6bb59a00fb",
+      "severity": "critical",
+      "sheet": "Model",
+      "suggested_fix": {
+        "flags": [],
+        "kind": "untrusted_text",
+        "original_length": null,
+        "risk": "none",
+        "source": "suggested formula for Model!E5",
+        "text": "=E4*1.1",
+        "truncated": false
+      }
+    },
+    {
+      "affected_count": 5,
+      "cell": "Model!B5",
+      "check_id": "C01",
+      "confidence": "medium",
+      "description": "Formula contains hardcoded number(s) 1.1; move them to labelled input cells. The same pattern appears in 4 more cell(s).",
+      "evidence": [
+        {
+          "address": "Model!B5",
+          "formula": {
+            "flags": [],
+            "kind": "untrusted_text",
+            "original_length": null,
+            "risk": "none",
+            "source": "Model!B5 (formula)",
+            "text": "=B4*1.1",
+            "truncated": false
+          },
+          "note": null,
+          "value": 1100
+        },
+        {
+          "address": "Model!C5",
+          "formula": {
+            "flags": [],
+            "kind": "untrusted_text",
+            "original_length": null,
+            "risk": "none",
+            "source": "Model!C5 (formula)",
+            "text": "=C4*1.1",
+            "truncated": false
+          },
+          "note": null,
+          "value": 1210
+        },
+        {
+          "address": "Model!D5",
+          "formula": {
+            "flags": [],
+            "kind": "untrusted_text",
+            "original_length": null,
+            "risk": "none",
+            "source": "Model!D5 (formula)",
+            "text": "=D4*1.1",
+            "truncated": false
+          },
+          "note": null,
+          "value": 1452
+        }
+      ],
+      "id": "C01-3c421900e6",
+      "severity": "warning",
+      "sheet": "Model",
+      "suggested_fix": {
+        "flags": [],
+        "kind": "untrusted_text",
+        "original_length": null,
+        "risk": "none",
+        "source": "suggested formula for Model!B5 (after creating a named input Input_1_1 = 1.1)",
+        "text": "=B4*Input_1_1",
+        "truncated": false
+      }
+    },
+    {
+      "affected_count": 1,
+      "cell": "Model!B7",
+      "check_id": "C03",
+      "confidence": "high",
+      "description": "Formula refers to empty cell(s) Model!Z20, which count as 0.",
+      "evidence": [
+        {
+          "address": "Model!B7",
+          "formula": {
+            "flags": [],
+            "kind": "untrusted_text",
+            "original_length": null,
+            "risk": "none",
+            "source": "Model!B7 (formula)",
+            "text": "=B4*Z20",
+            "truncated": false
+          },
+          "note": null,
+          "value": 0
+        },
+        {
+          "address": "Model!Z20",
+          "formula": null,
+          "note": "empty",
+          "value": null
+        }
+      ],
+      "id": "C03-03bb5b3414",
+      "severity": "warning",
+      "sheet": "Model",
+      "suggested_fix": null
+    },
+    {
+      "affected_count": 1,
+      "cell": "Model!I8",
+      "check_id": "C07",
+      "confidence": "high",
+      "description": "SUM range stops one cell short: Model!I7 continues the same block but is not included.",
+      "evidence": [
+        {
+          "address": "Model!I8",
+          "formula": {
+            "flags": [],
+            "kind": "untrusted_text",
+            "original_length": null,
+            "risk": "none",
+            "source": "Model!I8 (formula)",
+            "text": "=SUM(I2:I6)",
+            "truncated": false
+          },
+          "note": null,
+          "value": 560
+        },
+        {
+          "address": "Model!I7",
+          "formula": null,
+          "note": "left out",
+          "value": 140
+        }
+      ],
+      "id": "C07-6a8eb4b96c",
+      "severity": "warning",
+      "sheet": "Model",
+      "suggested_fix": {
+        "flags": [],
+        "kind": "untrusted_text",
+        "original_length": null,
+        "risk": "none",
+        "source": "suggested formula for Model!I8",
+        "text": "=SUM(I2:I7)",
+        "truncated": false
+      }
+    },
+    {
+      "affected_count": 1,
+      "cell": "Model!E5",
+      "check_id": "C12",
+      "confidence": "medium",
+      "description": "1 numeric input(s) not used by any formula.",
+      "evidence": [
+        {
+          "address": "Model!E5",
+          "formula": null,
+          "note": null,
+          "value": 1430
+        }
+      ],
+      "id": "C12-798556f024",
+      "severity": "info",
+      "sheet": "Model",
+      "suggested_fix": null
+    },
+    {
+      "affected_count": 1,
+      "cell": "Model!I7",
+      "check_id": "C12",
+      "confidence": "medium",
+      "description": "1 numeric input(s) not used by any formula.",
+      "evidence": [
+        {
+          "address": "Model!I7",
+          "formula": null,
+          "note": null,
+          "value": 140
+        }
+      ],
+      "id": "C12-ab62036772",
+      "severity": "info",
+      "sheet": "Model",
+      "suggested_fix": null
+    }
+  ],
+  "likely_outputs": [
+    {
+      "address": "Model!J8",
+      "upstream_cells": 6
+    },
+    {
+      "address": "Model!I8",
+      "upstream_cells": 5
+    },
+    {
+      "address": "Model!B7",
+      "upstream_cells": 4
+    },
+    {
+      "address": "Model!B5",
+      "upstream_cells": 3
+    },
+    {
+      "address": "Model!C5",
+      "upstream_cells": 3
+    },
+    {
+      "address": "Model!D5",
+      "upstream_cells": 3
+    },
+    {
+      "address": "Model!F5",
+      "upstream_cells": 3
+    },
+    {
+      "address": "Model!G5",
+      "upstream_cells": 3
+    },
+    {
+      "address": "Model!B8",
+      "upstream_cells": 3
+    },
+    {
+      "address": "Model!B9",
+      "upstream_cells": 3
+    }
+  ],
+  "options": {
+    "checks": [
+      "C01",
+      "C02",
+      "C03",
+      "C04",
+      "C05",
+      "C06",
+      "C07",
+      "C08",
+      "C09",
+      "C10",
+      "C11",
+      "C12",
+      "C13",
+      "C14"
+    ],
+    "min_severity": "info"
+  },
+  "schema_version": "0.1.0",
+  "summary": {
+    "by_check": {
+      "C01": 1,
+      "C03": 1,
+      "C06": 1,
+      "C07": 1,
+      "C12": 2
+    },
+    "by_severity": {
+      "critical": 1,
+      "info": 2,
+      "warning": 3
+    },
+    "total": 6
+  },
+  "tool": "sheetguard",
+  "tool_version": "0.1.0",
+  "untrusted_content": [],
+  "untrusted_summary": {
+    "by_risk": {
+      "high": 0,
+      "low": 0,
+      "medium": 0
+    },
+    "by_vector": {},
+    "total": 0
+  },
+  "workbook": {
+    "cell_count": 57,
+    "defined_names": 0,
+    "file_name": "checks_a.xlsx",
+    "flags": {
+      "activex": false,
+      "cached_values": true,
+      "calc_mode": "auto",
+      "data_connections": false,
+      "date_1904": false,
+      "dde": false,
+      "external_links": false,
+      "hidden_sheets": 0,
+      "iterative_calc": false,
+      "macros_present": false,
+      "ole_objects": false,
+      "untrusted_content_found": false,
+      "vba": false,
+      "very_hidden_sheets": 0,
+      "workbook_protected": false,
+      "xlm_macros": false
+    },
+    "formula_count": 16,
+    "sha256": "497d69f4a93fe6ed058f9b78312a55468678c2f3e198614f3ec6e5cfa94a7a33",
+    "sheet_count": 1,
+    "sheets": [
+      {
+        "cells": 57,
+        "formulas": 16,
+        "hidden_columns": 0,
+        "hidden_rows": 0,
+        "index": 0,
+        "name": "Model",
+        "protected": false,
+        "state": "visible",
+        "tables": [],
+        "used_range": "Model!A1:J9"
+      }
+    ],
+    "size_bytes": 6557,
+    "tables": 0
+  }
+}

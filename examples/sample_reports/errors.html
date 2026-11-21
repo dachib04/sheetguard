@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'unsafe-inline'; img-src data:">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="sheetguard 0.1.0">
+<title>SheetGuard report: errors.xlsx</title>
+<style>
+  :root { --crit:#b42318; --warn:#b54708; --info:#175cd3; --ink:#101828; --muted:#475467;
+          --line:#eaecf0; --bg:#f9fafb; --untrusted:#fff4e5; }
+  * { box-sizing: border-box; }
+  body { font: 14px/1.5 -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+         color: var(--ink); margin: 0; background: #fff; }
+  main { max-width: 1080px; margin: 0 auto; padding: 32px 24px 64px; }
+  h1 { font-size: 22px; margin: 0 0 4px; } h2 { font-size: 17px; margin: 32px 0 12px;
+  border-bottom: 1px solid var(--line); padding-bottom: 6px; } h3 { font-size: 15px; margin: 0; }
+  .muted { color: var(--muted); } .mono, code { font-family: ui-monospace, SFMono-Regular,
+  Menlo, Consolas, monospace; font-size: 12.5px; }
+  .cards { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-top: 20px; }
+  .card { border: 1px solid var(--line); border-radius: 8px; padding: 12px 14px; background: var(--bg); }
+  .card .n { font-size: 26px; font-weight: 600; } .crit .n { color: var(--crit); }
+  .warn .n { color: var(--warn); } .info .n { color: var(--info); }
+  table { border-collapse: collapse; width: 100%; } th, td { text-align: left; padding: 6px 8px;
+  border-bottom: 1px solid var(--line); vertical-align: top; } th { color: var(--muted);
+  font-weight: 500; font-size: 12.5px; }
+  .issue { border: 1px solid var(--line); border-left: 4px solid var(--info); border-radius: 6px;
+           padding: 12px 14px; margin: 10px 0; }
+  .issue.critical { border-left-color: var(--crit); } .issue.warning { border-left-color: var(--warn); }
+  .tag { display: inline-block; font-size: 11.5px; padding: 1px 7px; border-radius: 10px;
+         background: var(--bg); border: 1px solid var(--line); margin-right: 6px; }
+  .untrusted { background: var(--untrusted); border-radius: 4px; padding: 1px 4px;
+               white-space: pre-wrap; word-break: break-word; }
+  .flag-on { color: var(--crit); font-weight: 600; }
+  .note { font-size: 12.5px; color: var(--muted); }
+  footer { margin-top: 40px; font-size: 12px; color: var(--muted); }
+  @media print { .issue { break-inside: avoid; } }
+</style>
+</head>
+<body>
+<main>
+<h1>SheetGuard audit report</h1>
+<div class="muted">errors.xlsx · sha256 <span class="mono">790d07189f32568f…</span>
+  · 1 sheets · 25 formulas
+  · 49 cells</div>
+
+<div class="cards">
+  <div class="card"><div class="n">8</div>issues</div>
+  <div class="card crit"><div class="n">5</div>critical</div>
+  <div class="card warn"><div class="n">2</div>warnings</div>
+  <div class="card info"><div class="n">1</div>info</div>
+</div>
+
+<h2>Workbook</h2>
+<table>
+  <tr><th>Macros (VBA / XLM)</th><td class="">none</td>
+      <th>External links</th><td class="">none</td></tr>
+  <tr><th>Hidden / very hidden sheets</th><td class="">0 / 0</td>
+      <th>Cached values</th><td class="">present</td></tr>
+  <tr><th>Calculation</th><td>auto</td>
+      <th>OLE / ActiveX / DDE / connections</th><td>no / no / no / no</td></tr>
+</table>
+<table style="margin-top:12px">
+  <tr><th>Sheet</th><th>State</th><th>Used range</th><th>Cells</th><th>Formulas</th><th>Hidden rows / cols</th></tr>
+  <tr><td>Calc</td><td>visible</td><td class="mono">Calc!A1:H12</td>
+      <td>49</td><td>25</td><td>0 / 0</td></tr>
+</table>
+
+<h2>Likely outputs</h2>
+<p class="note">Formula cells nothing depends on, ranked by how many cells feed them. Good targets for driver analysis.</p>
+<table><tr><th>Cell</th><th>Cells feeding it</th></tr>
+<tr><td class="mono">Calc!H4</td><td>17</td></tr><tr><td class="mono">Calc!H2</td><td>6</td></tr><tr><td class="mono">Calc!H3</td><td>6</td></tr><tr><td class="mono">Calc!B9</td><td>6</td></tr><tr><td class="mono">Calc!D8</td><td>5</td></tr><tr><td class="mono">Calc!C5</td><td>3</td></tr><tr><td class="mono">Calc!D5</td><td>3</td></tr><tr><td class="mono">Calc!F5</td><td>3</td></tr><tr><td class="mono">Calc!G5</td><td>3</td></tr><tr><td class="mono">Calc!E5</td><td>2</td></tr></table>
+
+<h2>Critical (5)</h2>
+<div class="issue critical">
+  <h3><span class="tag">C02</span><span class="mono">Calc!E4</span></h3>
+  <div>Inconsistent formula in a row or column    · <span class="muted">confidence high</span> · <span class="muted mono">C02-643718169e</span></div>
+  <p>Formula differs from the pattern shared by 5 of 6 cells in row 4.</p>
+  <table>
+    <tr><th>Cell</th><th>Formula</th><th>Value</th><th></th></tr>
+    <tr><td class="mono">Calc!E4</td>
+        <td><code class="untrusted">=E2*E2</code></td>
+        <td><span class="mono">225</span></td>
+        <td class="note">outlier</td></tr>
+    <tr><td class="mono">Calc!B4</td>
+        <td><code class="untrusted">=B2*B3</code></td>
+        <td><span class="mono">50</span></td>
+        <td class="note">consistent neighbour</td></tr>
+    <tr><td class="mono">Calc!C4</td>
+        <td><code class="untrusted">=C2*C3</code></td>
+        <td><span class="mono">60</span></td>
+        <td class="note">consistent neighbour</td></tr>
+  </table>
+<p><strong>Suggested:</strong> <code class="untrusted">=E2*E3</code> <span class="note">(text only; SheetGuard never changes the file)</span></p></div>
+<div class="issue critical">
+  <h3><span class="tag">C04</span><span class="mono">Calc!B7</span></h3>
+  <div>Error values · 3 cells    · <span class="muted">confidence high</span> · <span class="muted mono">C04-5cb71f9e37</span></div>
+  <p>Cell shows #DIV/0!. It propagates to 2 other cell(s).</p>
+  <table>
+    <tr><th>Cell</th><th>Formula</th><th>Value</th><th></th></tr>
+    <tr><td class="mono">Calc!B7</td>
+        <td><code class="untrusted">=B5/0</code></td>
+        <td><code class="untrusted">#DIV/0!</code></td>
+        <td class="note">root error</td></tr>
+    <tr><td class="mono">Calc!B8</td>
+        <td><code class="untrusted">=B7*2</code></td>
+        <td><code class="untrusted">#DIV/0!</code></td>
+        <td class="note">propagated</td></tr>
+    <tr><td class="mono">Calc!B9</td>
+        <td><code class="untrusted">=B8+1</code></td>
+        <td><code class="untrusted">#DIV/0!</code></td>
+        <td class="note">propagated</td></tr>
+  </table>
+</div>
+<div class="issue critical">
+  <h3><span class="tag">C04</span><span class="mono">Calc!F7</span></h3>
+  <div>Error values    · <span class="muted">confidence high</span> · <span class="muted mono">C04-acf2d1b4cf</span></div>
+  <p>Cell shows #REF!.</p>
+  <table>
+    <tr><th>Cell</th><th>Formula</th><th>Value</th><th></th></tr>
+    <tr><td class="mono">Calc!F7</td>
+        <td><code class="untrusted">=#REF!+1</code></td>
+        <td><code class="untrusted">#REF!</code></td>
+        <td class="note">root error</td></tr>
+  </table>
+</div>
+<div class="issue critical">
+  <h3><span class="tag">C05</span><span class="mono">Calc!B11</span></h3>
+  <div>Circular reference    · <span class="muted">confidence high</span> · <span class="muted mono">C05-948aec5f11</span></div>
+  <p>Cell refers to itself.</p>
+  <table>
+    <tr><th>Cell</th><th>Formula</th><th>Value</th><th></th></tr>
+    <tr><td class="mono">Calc!B11</td>
+        <td><code class="untrusted">=B11+1</code></td>
+        <td><code class="untrusted">#VALUE!</code></td>
+        <td class="note"></td></tr>
+  </table>
+</div>
+<div class="issue critical">
+  <h3><span class="tag">C05</span><span class="mono">Calc!B12</span></h3>
+  <div>Circular reference · 3 cells    · <span class="muted">confidence high</span> · <span class="muted mono">C05-6f2d6d54bf</span></div>
+  <p>Circular reference through 3 cells: Calc!B12 -&gt; Calc!C12 -&gt; Calc!D12.</p>
+  <table>
+    <tr><th>Cell</th><th>Formula</th><th>Value</th><th></th></tr>
+    <tr><td class="mono">Calc!B12</td>
+        <td><code class="untrusted">=C12+1</code></td>
+        <td><code class="untrusted">#VALUE!</code></td>
+        <td class="note"></td></tr>
+    <tr><td class="mono">Calc!C12</td>
+        <td><code class="untrusted">=D12+1</code></td>
+        <td><code class="untrusted">#VALUE!</code></td>
+        <td class="note"></td></tr>
+    <tr><td class="mono">Calc!D12</td>
+        <td><code class="untrusted">=B12+1</code></td>
+        <td><code class="untrusted">#VALUE!</code></td>
+        <td class="note"></td></tr>
+  </table>
+</div>
+<h2>Warnings (2)</h2>
+<div class="issue warning">
+  <h3><span class="tag">C01</span><span class="mono">Calc!B5</span></h3>
+  <div>Hardcoded constant inside a formula · 6 cells    · <span class="muted">confidence medium</span> · <span class="muted mono">C01-c6c6b13a89</span></div>
+  <p>Formula contains hardcoded number(s) 0.2; move them to labelled input cells. The same pattern appears in 5 more cell(s).</p>
+  <table>
+    <tr><th>Cell</th><th>Formula</th><th>Value</th><th></th></tr>
+    <tr><td class="mono">Calc!B5</td>
+        <td><code class="untrusted">=B4*0.2</code></td>
+        <td><span class="mono">10</span></td>
+        <td class="note"></td></tr>
+    <tr><td class="mono">Calc!C5</td>
+        <td><code class="untrusted">=C4*0.2</code></td>
+        <td><span class="mono">12</span></td>
+        <td class="note"></td></tr>
+    <tr><td class="mono">Calc!D5</td>
+        <td><code class="untrusted">=D4*0.2</code></td>
+        <td><span class="mono">14</span></td>
+        <td class="note"></td></tr>
+  </table>
+<p><strong>Suggested:</strong> <code class="untrusted">=B4*Input_0_2</code> <span class="note">(text only; SheetGuard never changes the file)</span></p></div>
+<div class="issue warning">
+  <h3><span class="tag">C01</span><span class="mono">Calc!D7</span></h3>
+  <div>Hardcoded constant inside a formula    · <span class="muted">confidence medium</span> · <span class="muted mono">C01-cbdf9e6686</span></div>
+  <p>Formula contains hardcoded number(s) 99; move them to labelled input cells.</p>
+  <table>
+    <tr><th>Cell</th><th>Formula</th><th>Value</th><th></th></tr>
+    <tr><td class="mono">Calc!D7</td>
+        <td><code class="untrusted">=VLOOKUP(99,B2:C3,2,FALSE())</code></td>
+        <td><code class="untrusted">#N/A</code></td>
+        <td class="note"></td></tr>
+  </table>
+<p><strong>Suggested:</strong> <code class="untrusted">=VLOOKUP(Input_99,B2:C3,2,FALSE())</code> <span class="note">(text only; SheetGuard never changes the file)</span></p></div>
+<h2>Info (1)</h2>
+<div class="issue info">
+  <h3><span class="tag">C04</span><span class="mono">Calc!D7</span></h3>
+  <div>Error values    · <span class="muted">confidence high</span> · <span class="muted mono">C04-dfd5f4097f</span></div>
+  <p>Cell shows #N/A (handled by IFERROR/IFNA in Calc!D8).</p>
+  <table>
+    <tr><th>Cell</th><th>Formula</th><th>Value</th><th></th></tr>
+    <tr><td class="mono">Calc!D7</td>
+        <td><code class="untrusted">=VLOOKUP(99,B2:C3,2,FALSE())</code></td>
+        <td><code class="untrusted">#N/A</code></td>
+        <td class="note">root error</td></tr>
+  </table>
+</div>
+
+<h2>Untrusted content</h2>
+<p class="note">Text in the workbook that reads like instructions to a reader or an AI, or that is concealed. Shown as data; never followed. Detection is heuristic: absence of findings is not proof of safety.</p>
+<p>No untrusted-content findings.</p>
+
+<footer>Generated by SheetGuard 0.1.0 · report schema 0.1.0 ·
+read-only analysis; the workbook was not modified, no macros were run and no links were followed.
+Highlighted text is file content, not instructions.</footer>
+</main>
+</body>
+</html>

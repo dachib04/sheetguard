@@ -1,0 +1,112 @@
+{
+  "issues": [],
+  "likely_outputs": [
+    {
+      "address": "Forecast!B10",
+      "upstream_cells": 79
+    },
+    {
+      "address": "Forecast!B9",
+      "upstream_cells": 64
+    },
+    {
+      "address": "Forecast!N4",
+      "upstream_cells": 38
+    }
+  ],
+  "options": {
+    "checks": [
+      "C01",
+      "C02",
+      "C03",
+      "C04",
+      "C05",
+      "C06",
+      "C07",
+      "C08",
+      "C09",
+      "C10",
+      "C11",
+      "C12",
+      "C13",
+      "C14"
+    ],
+    "min_severity": "info"
+  },
+  "schema_version": "0.1.0",
+  "summary": {
+    "by_check": {},
+    "by_severity": {
+      "critical": 0,
+      "info": 0,
+      "warning": 0
+    },
+    "total": 0
+  },
+  "tool": "sheetguard",
+  "tool_version": "0.1.0",
+  "untrusted_content": [],
+  "untrusted_summary": {
+    "by_risk": {
+      "high": 0,
+      "low": 0,
+      "medium": 0
+    },
+    "by_vector": {},
+    "total": 0
+  },
+  "workbook": {
+    "cell_count": 109,
+    "defined_names": 0,
+    "file_name": "forecast.xlsx",
+    "flags": {
+      "activex": false,
+      "cached_values": true,
+      "calc_mode": "auto",
+      "data_connections": false,
+      "date_1904": false,
+      "dde": false,
+      "external_links": false,
+      "hidden_sheets": 0,
+      "iterative_calc": false,
+      "macros_present": false,
+      "ole_objects": false,
+      "untrusted_content_found": false,
+      "vba": false,
+      "very_hidden_sheets": 0,
+      "workbook_protected": false,
+      "xlm_macros": false
+    },
+    "formula_count": 65,
+    "sha256": "5233b479a6894b9465b9a0f5ae28ee4cf6341861f41dcb160512a3ec6a287c46",
+    "sheet_count": 2,
+    "sheets": [
+      {
+        "cells": 10,
+        "formulas": 0,
+        "hidden_columns": 0,
+        "hidden_rows": 0,
+        "index": 0,
+        "name": "Inputs",
+        "protected": false,
+        "state": "visible",
+        "tables": [],
+        "used_range": "Inputs!A1:B5"
+      },
+      {
+        "cells": 99,
+        "formulas": 65,
+        "hidden_columns": 0,
+        "hidden_rows": 0,
+        "index": 1,
+        "name": "Forecast",
+        "protected": false,
+        "state": "visible",
+        "tables": [],
+        "used_range": "Forecast!A1:N10"
+      }
+    ],
+    "size_bytes": 8652,
+    "tables": 0
+  }
+}

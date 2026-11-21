@@ -1,0 +1,142 @@
+{
+  "issues": [],
+  "likely_outputs": [
+    {
+      "address": "Summary!B4",
+      "upstream_cells": 68
+    },
+    {
+      "address": "Summary!B2",
+      "upstream_cells": 66
+    },
+    {
+      "address": "Summary!B3",
+      "upstream_cells": 65
+    },
+    {
+      "address": "'Budget 2026'!B7",
+      "upstream_cells": 5
+    },
+    {
+      "address": "'Budget 2026'!C7",
+      "upstream_cells": 5
+    },
+    {
+      "address": "'Budget 2026'!D7",
+      "upstream_cells": 5
+    },
+    {
+      "address": "'Budget 2026'!E7",
+      "upstream_cells": 5
+    },
+    {
+      "address": "'Budget 2026'!F7",
+      "upstream_cells": 5
+    },
+    {
+      "address": "'Budget 2026'!G7",
+      "upstream_cells": 5
+    },
+    {
+      "address": "'Budget 2026'!H7",
+      "upstream_cells": 5
+    }
+  ],
+  "options": {
+    "checks": [
+      "C01",
+      "C02",
+      "C03",
+      "C04",
+      "C05",
+      "C06",
+      "C07",
+      "C08",
+      "C09",
+      "C10",
+      "C11",
+      "C12",
+      "C13",
+      "C14"
+    ],
+    "min_severity": "info"
+  },
+  "schema_version": "0.1.0",
+  "summary": {
+    "by_check": {},
+    "by_severity": {
+      "critical": 0,
+      "info": 0,
+      "warning": 0
+    },
+    "total": 0
+  },
+  "tool": "sheetguard",
+  "tool_version": "0.1.0",
+  "untrusted_content": [],
+  "untrusted_summary": {
+    "by_risk": {
+      "high": 0,
+      "low": 0,
+      "medium": 0
+    },
+    "by_vector": {},
+    "total": 0
+  },
+  "workbook": {
+    "cell_count": 106,
+    "defined_names": 0,
+    "file_name": "budget.xlsx",
+    "flags": {
+      "activex": false,
+      "cached_values": true,
+      "calc_mode": "auto",
+      "data_connections": false,
+      "date_1904": false,
+      "dde": false,
+      "external_links": false,
+      "hidden_sheets": 0,
+      "iterative_calc": false,
+      "macros_present": false,
+      "ole_objects": false,
+      "untrusted_content_found": false,
+      "vba": false,
+      "very_hidden_sheets": 0,
+      "workbook_protected": false,
+      "xlm_macros": false
+    },
+    "formula_count": 22,
+    "sha256": "015c12f99983f645c4d175f434948a45e6803d606dbc7b31e06d535dd6723c91",
+    "sheet_count": 2,
+    "sheets": [
+      {
+        "cells": 98,
+        "formulas": 18,
+        "hidden_columns": 0,
+        "hidden_rows": 0,
+        "index": 0,
+        "name": "Budget 2026",
+        "protected": false,
+        "state": "visible",
+        "tables": [
+          "BudgetTable"
+        ],
+        "used_range": "'Budget 2026'!A1:N7"
+      },
+      {
+        "cells": 8,
+        "formulas": 4,
+        "hidden_columns": 0,
+        "hidden_rows": 0,
+        "index": 1,
+        "name": "Summary",
+        "protected": false,
+        "state": "visible",
+        "tables": [],
+        "used_range": "Summary!A1:B4"
+      }
+    ],
+    "size_bytes": 8937,
+    "tables": 1
+  }
+}

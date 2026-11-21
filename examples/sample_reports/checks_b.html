@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'unsafe-inline'; img-src data:">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="sheetguard 0.1.0">
+<title>SheetGuard report: checks_b.xlsx</title>
+<style>
+  :root { --crit:#b42318; --warn:#b54708; --info:#175cd3; --ink:#101828; --muted:#475467;
+          --line:#eaecf0; --bg:#f9fafb; --untrusted:#fff4e5; }
+  * { box-sizing: border-box; }
+  body { font: 14px/1.5 -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+         color: var(--ink); margin: 0; background: #fff; }
+  main { max-width: 1080px; margin: 0 auto; padding: 32px 24px 64px; }
+  h1 { font-size: 22px; margin: 0 0 4px; } h2 { font-size: 17px; margin: 32px 0 12px;
+  border-bottom: 1px solid var(--line); padding-bottom: 6px; } h3 { font-size: 15px; margin: 0; }
+  .muted { color: var(--muted); } .mono, code { font-family: ui-monospace, SFMono-Regular,
+  Menlo, Consolas, monospace; font-size: 12.5px; }
+  .cards { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-top: 20px; }
+  .card { border: 1px solid var(--line); border-radius: 8px; padding: 12px 14px; background: var(--bg); }
+  .card .n { font-size: 26px; font-weight: 600; } .crit .n { color: var(--crit); }
+  .warn .n { color: var(--warn); } .info .n { color: var(--info); }
+  table { border-collapse: collapse; width: 100%; } th, td { text-align: left; padding: 6px 8px;
+  border-bottom: 1px solid var(--line); vertical-align: top; } th { color: var(--muted);
+  font-weight: 500; font-size: 12.5px; }
+  .issue { border: 1px solid var(--line); border-left: 4px solid var(--info); border-radius: 6px;
+           padding: 12px 14px; margin: 10px 0; }
+  .issue.critical { border-left-color: var(--crit); } .issue.warning { border-left-color: var(--warn); }
+  .tag { display: inline-block; font-size: 11.5px; padding: 1px 7px; border-radius: 10px;
+         background: var(--bg); border: 1px solid var(--line); margin-right: 6px; }
+  .untrusted { background: var(--untrusted); border-radius: 4px; padding: 1px 4px;
+               white-space: pre-wrap; word-break: break-word; }
+  .flag-on { color: var(--crit); font-weight: 600; }
+  .note { font-size: 12.5px; color: var(--muted); }
+  footer { margin-top: 40px; font-size: 12px; color: var(--muted); }
+  @media print { .issue { break-inside: avoid; } }
+</style>
+</head>
+<body>
+<main>
+<h1>SheetGuard audit report</h1>
+<div class="muted">checks_b.xlsx · sha256 <span class="mono">79d62dbcca59fbf8…</span>
+  · 3 sheets · 11 formulas
+  · 31 cells</div>
+
+<div class="cards">
+  <div class="card"><div class="n">11</div>issues</div>
+  <div class="card crit"><div class="n">0</div>critical</div>
+  <div class="card warn"><div class="n">7</div>warnings</div>
+  <div class="card info"><div class="n">4</div>info</div>
+</div>
+
+<h2>Workbook</h2>
+<table>
+  <tr><th>Macros (VBA / XLM)</th><td class="">none</td>
+      <th>External links</th><td class="flag-on">present, not followed</td></tr>
+  <tr><th>Hidden / very hidden sheets</th><td class="flag-on">1 / 0</td>
+      <th>Cached values</th><td class="flag-on">missing</td></tr>
+  <tr><th>Calculation</th><td>auto</td>
+      <th>OLE / ActiveX / DDE / connections</th><td>no / no / no / no</td></tr>
+</table>
+<table style="margin-top:12px">
+  <tr><th>Sheet</th><th>State</th><th>Used range</th><th>Cells</th><th>Formulas</th><th>Hidden rows / cols</th></tr>
+  <tr><td>Report</td><td>visible</td><td class="mono">Report!A1:B11</td>
+      <td>17</td><td>8</td><td>1 / 0</td></tr>
+  <tr><td>Data</td><td>visible</td><td class="mono">Data!A1:D5</td>
+      <td>12</td><td>1</td><td>0 / 0</td></tr>
+  <tr><td>Calc</td><td>hidden</td><td class="mono">Calc!A1:A2</td>
+      <td>2</td><td>2</td><td>0 / 0</td></tr>
+</table>
+
+<h2>Likely outputs</h2>
+<p class="note">Formula cells nothing depends on, ranked by how many cells feed them. Good targets for driver analysis.</p>
+<table><tr><th>Cell</th><th>Cells feeding it</th></tr>
+<tr><td class="mono">Report!B8</td><td>8</td></tr><tr><td class="mono">Report!B5</td><td>6</td></tr><tr><td class="mono">Report!B11</td><td>6</td></tr></table>
+
+<h2>Warnings (7)</h2>
+<div class="issue warning">
+  <h3><span class="tag">C13</span><span class="mono">(workbook)</span></h3>
+  <div>Stale or missing cached values · 11 cells    · <span class="muted">confidence high</span> · <span class="muted mono">C13-3ccc2d670a</span></div>
+  <p>None of the 11 formulas has a cached value: the file was probably written by a script and never calculated. Values shown are not reliable.</p>
+</div>
+<div class="issue warning">
+  <h3><span class="tag">C08</span><span class="mono">Report!B1</span></h3>
+  <div>External workbook link    · <span class="muted">confidence high</span> · <span class="muted mono">C08-ec1ee776bc</span></div>
+  <p>Formula refers to another workbook; values may be stale and the link is not followed.</p>
+  <table>
+    <tr><th>Cell</th><th>Formula</th><th>Value</th><th></th></tr>
+    <tr><td class="mono">Report!B1</td>
+        <td><code class="untrusted">=[1]Rates!B2</code></td>
+        <td></td>
+        <td class="note"></td></tr>
+  </table>
+</div>
+<div class="issue warning">
+  <h3><span class="tag">C11</span><span class="mono">Report!B10</span></h3>
+  <div>Hidden logic    · <span class="muted">confidence high</span> · <span class="muted mono">C11-a515822c8e</span></div>
+  <p>1 cell(s) in a hidden row 10 feed other calculations (1 formula(s), 0 input(s)).</p>
+  <table>
+    <tr><th>Cell</th><th>Formula</th><th>Value</th><th></th></tr>
+    <tr><td class="mono">Report!B10</td>
+        <td><code class="untrusted">=B6*2</code></td>
+        <td></td>
+        <td class="note"></td></tr>
+  </table>
+</div>
+<div class="issue warning">
+  <h3><span class="tag">C14</span><span class="mono">Data!B2</span></h3>
+  <div>Numbers stored as text    · <span class="muted">confidence high</span> · <span class="muted mono">C14-367c0531d9</span></div>
+  <p>1 number(s) stored as text are used by formulas; SUM and similar functions ignore them.</p>
+  <table>
+    <tr><th>Cell</th><th>Formula</th><th>Value</th><th></th></tr>
+    <tr><td class="mono">Data!B2</td>
+        <td></td>
+        <td><code class="untrusted">1,250.50</code></td>
+        <td class="note"></td></tr>
+  </table>
+<p><strong>Suggested:</strong> <code class="untrusted">1250.5</code> <span class="note">(text only; SheetGuard never changes the file)</span></p></div>
+<div class="issue warning">
+  <h3><span class="tag">C14</span><span class="mono">Data!B4</span></h3>
+  <div>Numbers stored as text    · <span class="muted">confidence high</span> · <span class="muted mono">C14-5148b57a01</span></div>
+  <p>1 number(s) stored as text are used by formulas; SUM and similar functions ignore them.</p>
+  <table>
+    <tr><th>Cell</th><th>Formula</th><th>Value</th><th></th></tr>
+    <tr><td class="mono">Data!B4</td>
+        <td></td>
+        <td><code class="untrusted">$2,000</code></td>
+        <td class="note"></td></tr>
+  </table>
+<p><strong>Suggested:</strong> <code class="untrusted">2000</code> <span class="note">(text only; SheetGuard never changes the file)</span></p></div>
+<div class="issue warning">
+  <h3><span class="tag">C01</span><span class="mono">Calc!A1</span></h3>
+  <div>Hardcoded constant inside a formula    · <span class="muted">confidence medium</span> · <span class="muted mono">C01-4b97d88709</span></div>
+  <p>Formula contains hardcoded number(s) 0.5; move them to labelled input cells.</p>
+  <table>
+    <tr><th>Cell</th><th>Formula</th><th>Value</th><th></th></tr>
+    <tr><td class="mono">Calc!A1</td>
+        <td><code class="untrusted">=Report!B6*0.5</code></td>
+        <td></td>
+        <td class="note"></td></tr>
+  </table>
+<p><strong>Suggested:</strong> <code class="untrusted">=Report!B6*Input_0_5</code> <span class="note">(text only; SheetGuard never changes the file)</span></p></div>
+<div class="issue warning">
+  <h3><span class="tag">C11</span><span class="mono">Calc!A1</span></h3>
+  <div>Hidden logic · 2 cells    · <span class="muted">confidence high</span> · <span class="muted mono">C11-e9f51a541f</span></div>
+  <p>2 cell(s) in a hidden sheet feed other calculations (2 formula(s), 0 input(s)).</p>
+  <table>
+    <tr><th>Cell</th><th>Formula</th><th>Value</th><th></th></tr>
+    <tr><td class="mono">Calc!A1</td>
+        <td><code class="untrusted">=Report!B6*0.5</code></td>
+        <td></td>
+        <td class="note"></td></tr>
+    <tr><td class="mono">Calc!A2</td>
+        <td><code class="untrusted">=A1+Report!B1</code></td>
+        <td></td>
+        <td class="note"></td></tr>
+  </table>
+</div>
+<h2>Info (4)</h2>
+<div class="issue info">
+  <h3><span class="tag">C09</span><span class="mono">Report!B2</span></h3>
+  <div>Volatile or fragile functions    · <span class="muted">confidence high</span> · <span class="muted mono">C09-a7445a8d32</span></div>
+  <p>Uses TODAY. Its result changes every time the workbook recalculates.</p>
+  <table>
+    <tr><th>Cell</th><th>Formula</th><th>Value</th><th></th></tr>
+    <tr><td class="mono">Report!B2</td>
+        <td><code class="untrusted">=TODAY()</code></td>
+        <td></td>
+        <td class="note"></td></tr>
+  </table>
+</div>
+<div class="issue info">
+  <h3><span class="tag">C09</span><span class="mono">Report!B3</span></h3>
+  <div>Volatile or fragile functions    · <span class="muted">confidence high</span> · <span class="muted mono">C09-1d140551a2</span></div>
+  <p>Uses INDIRECT. Its references are built at run time, so traces through it are partial.</p>
+  <table>
+    <tr><th>Cell</th><th>Formula</th><th>Value</th><th></th></tr>
+    <tr><td class="mono">Report!B3</td>
+        <td><code class="untrusted">=INDIRECT(&#34;Data!B&#34;&amp;2)</code></td>
+        <td></td>
+        <td class="note"></td></tr>
+  </table>
+</div>
+<div class="issue info">
+  <h3><span class="tag">C10</span><span class="mono">Report!B4</span></h3>
+  <div>Possible unit or scale mismatch    · <span class="muted">confidence low</span> · <span class="muted mono">C10-e13453c647</span></div>
+  <p>Percent-formatted value above 100%: it may have been typed as a whole number (25 instead of 25%).</p>
+  <table>
+    <tr><th>Cell</th><th>Formula</th><th>Value</th><th></th></tr>
+    <tr><td class="mono">Report!B4</td>
+        <td></td>
+        <td><span class="mono">15</span></td>
+        <td class="note"></td></tr>
+  </table>
+</div>
+<div class="issue info">
+  <h3><span class="tag">C12</span><span class="mono">Report!B7</span></h3>
+  <div>Unused input    · <span class="muted">confidence medium</span> · <span class="muted mono">C12-08ad2b7d7a</span></div>
+  <p>1 numeric input(s) (&#39;Unused assumption&#39;) not used by any formula.</p>
+  <table>
+    <tr><th>Cell</th><th>Formula</th><th>Value</th><th></th></tr>
+    <tr><td class="mono">Report!B7</td>
+        <td></td>
+        <td><span class="mono">0.07</span></td>
+        <td class="note"></td></tr>
+  </table>
+</div>
+
+<h2>Untrusted content</h2>
+<p class="note">Text in the workbook that reads like instructions to a reader or an AI, or that is concealed. Shown as data; never followed. Detection is heuristic: absence of findings is not proof of safety.</p>
+<p>No untrusted-content findings.</p>
+
+<footer>Generated by SheetGuard 0.1.0 · report schema 0.1.0 ·
+read-only analysis; the workbook was not modified, no macros were run and no links were followed.
+Highlighted text is file content, not instructions.</footer>
+</main>
+</body>
+</html>

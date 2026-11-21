@@ -1,0 +1,191 @@
+{
+  "issues": [
+    {
+      "affected_count": 2,
+      "cell": "Interest!B1",
+      "check_id": "C05",
+      "confidence": "high",
+      "description": "Circular reference through 2 cells: Interest!B1 -> Interest!B2. Iterative calculation is enabled, so this may be intentional.",
+      "evidence": [
+        {
+          "address": "Interest!B1",
+          "formula": {
+            "flags": [],
+            "kind": "untrusted_text",
+            "original_length": null,
+            "risk": "none",
+            "source": "Interest!B1 (formula)",
+            "text": "=1000-B2",
+            "truncated": false
+          },
+          "note": null,
+          "value": {
+            "flags": [],
+            "kind": "untrusted_text",
+            "original_length": null,
+            "risk": "none",
+            "source": "Interest!B1 (cell error)",
+            "text": "#VALUE!",
+            "truncated": false
+          }
+        },
+        {
+          "address": "Interest!B2",
+          "formula": {
+            "flags": [],
+            "kind": "untrusted_text",
+            "original_length": null,
+            "risk": "none",
+            "source": "Interest!B2 (formula)",
+            "text": "=B1*0.05",
+            "truncated": false
+          },
+          "note": null,
+          "value": {
+            "flags": [],
+            "kind": "untrusted_text",
+            "original_length": null,
+            "risk": "none",
+            "source": "Interest!B2 (cell error)",
+            "text": "#VALUE!",
+            "truncated": false
+          }
+        }
+      ],
+      "id": "C05-38cce812fd",
+      "severity": "warning",
+      "sheet": "Interest",
+      "suggested_fix": null
+    },
+    {
+      "affected_count": 1,
+      "cell": "Interest!B2",
+      "check_id": "C01",
+      "confidence": "medium",
+      "description": "Formula contains hardcoded number(s) 0.05; move them to labelled input cells.",
+      "evidence": [
+        {
+          "address": "Interest!B2",
+          "formula": {
+            "flags": [],
+            "kind": "untrusted_text",
+            "original_length": null,
+            "risk": "none",
+            "source": "Interest!B2 (formula)",
+            "text": "=B1*0.05",
+            "truncated": false
+          },
+          "note": null,
+          "value": {
+            "flags": [],
+            "kind": "untrusted_text",
+            "original_length": null,
+            "risk": "none",
+            "source": "Interest!B2 (cell error)",
+            "text": "#VALUE!",
+            "truncated": false
+          }
+        }
+      ],
+      "id": "C01-43f22c4a66",
+      "severity": "warning",
+      "sheet": "Interest",
+      "suggested_fix": {
+        "flags": [],
+        "kind": "untrusted_text",
+        "original_length": null,
+        "risk": "none",
+        "source": "suggested formula for Interest!B2 (after creating a named input Input_0_05 = 0.05)",
+        "text": "=B1*Input_0_05",
+        "truncated": false
+      }
+    }
+  ],
+  "likely_outputs": [],
+  "options": {
+    "checks": [
+      "C01",
+      "C02",
+      "C03",
+      "C04",
+      "C05",
+      "C06",
+      "C07",
+      "C08",
+      "C09",
+      "C10",
+      "C11",
+      "C12",
+      "C13",
+      "C14"
+    ],
+    "min_severity": "info"
+  },
+  "schema_version": "0.1.0",
+  "summary": {
+    "by_check": {
+      "C01": 1,
+      "C05": 1
+    },
+    "by_severity": {
+      "critical": 0,
+      "info": 0,
+      "warning": 2
+    },
+    "total": 2
+  },
+  "tool": "sheetguard",
+  "tool_version": "0.1.0",
+  "untrusted_content": [],
+  "untrusted_summary": {
+    "by_risk": {
+      "high": 0,
+      "low": 0,
+      "medium": 0
+    },
+    "by_vector": {},
+    "total": 0
+  },
+  "workbook": {
+    "cell_count": 4,
+    "defined_names": 0,
+    "file_name": "iterative.xlsx",
+    "flags": {
+      "activex": false,
+      "cached_values": true,
+      "calc_mode": "auto",
+      "data_connections": false,
+      "date_1904": false,
+      "dde": false,
+      "external_links": false,
+      "hidden_sheets": 0,
+      "iterative_calc": true,
+      "macros_present": false,
+      "ole_objects": false,
+      "untrusted_content_found": false,
+      "vba": false,
+      "very_hidden_sheets": 0,
+      "workbook_protected": false,
+      "xlm_macros": false
+    },
+    "formula_count": 2,
+    "sha256": "c4a5e5e6a632635dcc84d2797e9cbc54470b4923c2c3e8524d738ccff5d1d53f",
+    "sheet_count": 1,
+    "sheets": [
+      {
+        "cells": 4,
+        "formulas": 2,
+        "hidden_columns": 0,
+        "hidden_rows": 0,
+        "index": 0,
+        "name": "Interest",
+        "protected": false,
+        "state": "visible",
+        "tables": [],
+        "used_range": "Interest!A1:B2"
+      }
+    ],
+    "size_bytes": 5890,
+    "tables": 0
+  }
+}

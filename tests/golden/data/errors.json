@@ -1,0 +1,566 @@
+{
+  "issues": [
+    {
+      "affected_count": 1,
+      "cell": "Calc!E4",
+      "check_id": "C02",
+      "confidence": "high",
+      "description": "Formula differs from the pattern shared by 5 of 6 cells in row 4.",
+      "evidence": [
+        {
+          "address": "Calc!E4",
+          "formula": {
+            "flags": [],
+            "kind": "untrusted_text",
+            "original_length": null,
+            "risk": "none",
+            "source": "Calc!E4 (formula)",
+            "text": "=E2*E2",
+            "truncated": false
+          },
+          "note": "outlier",
+          "value": 225
+        },
+        {
+          "address": "Calc!B4",
+          "formula": {
+            "flags": [],
+            "kind": "untrusted_text",
+            "original_length": null,
+            "risk": "none",
+            "source": "Calc!B4 (formula)",
+            "text": "=B2*B3",
+            "truncated": false
+          },
+          "note": "consistent neighbour",
+          "value": 50
+        },
+        {
+          "address": "Calc!C4",
+          "formula": {
+            "flags": [],
+            "kind": "untrusted_text",
+            "original_length": null,
+            "risk": "none",
+            "source": "Calc!C4 (formula)",
+            "text": "=C2*C3",
+            "truncated": false
+          },
+          "note": "consistent neighbour",
+          "value": 60
+        }
+      ],
+      "id": "C02-643718169e",
+      "severity": "critical",
+      "sheet": "Calc",
+      "suggested_fix": {
+        "flags": [],
+        "kind": "untrusted_text",
+        "original_length": null,
+        "risk": "none",
+        "source": "suggested formula for Calc!E4",
+        "text": "=E2*E3",
+        "truncated": false
+      }
+    },
+    {
+      "affected_count": 3,
+      "cell": "Calc!B7",
+      "check_id": "C04",
+      "confidence": "high",
+      "description": "Cell shows #DIV/0!. It propagates to 2 other cell(s).",
+      "evidence": [
+        {
+          "address": "Calc!B7",
+          "formula": {
+            "flags": [],
+            "kind": "untrusted_text",
+            "original_length": null,
+            "risk": "none",
+            "source": "Calc!B7 (formula)",
+            "text": "=B5/0",
+            "truncated": false
+          },
+          "note": "root error",
+          "value": {
+            "flags": [],
+            "kind": "untrusted_text",
+            "original_length": null,
+            "risk": "none",
+            "source": "Calc!B7 (cell error)",
+            "text": "#DIV/0!",
+            "truncated": false
+          }
+        },
+        {
+          "address": "Calc!B8",
+          "formula": {
+            "flags": [],
+            "kind": "untrusted_text",
+            "original_length": null,
+            "risk": "none",
+            "source": "Calc!B8 (formula)",
+            "text": "=B7*2",
+            "truncated": false
+          },
+          "note": "propagated",
+          "value": {
+            "flags": [],
+            "kind": "untrusted_text",
+            "original_length": null,
+            "risk": "none",
+            "source": "Calc!B8 (cell error)",
+            "text": "#DIV/0!",
+            "truncated": false
+          }
+        },
+        {
+          "address": "Calc!B9",
+          "formula": {
+            "flags": [],
+            "kind": "untrusted_text",
+            "original_length": null,
+            "risk": "none",
+            "source": "Calc!B9 (formula)",
+            "text": "=B8+1",
+            "truncated": false
+          },
+          "note": "propagated",
+          "value": {
+            "flags": [],
+            "kind": "untrusted_text",
+            "original_length": null,
+            "risk": "none",
+            "source": "Calc!B9 (cell error)",
+            "text": "#DIV/0!",
+            "truncated": false
+          }
+        }
+      ],
+      "id": "C04-5cb71f9e37",
+      "severity": "critical",
+      "sheet": "Calc",
+      "suggested_fix": null
+    },
+    {
+      "affected_count": 1,
+      "cell": "Calc!F7",
+      "check_id": "C04",
+      "confidence": "high",
+      "description": "Cell shows #REF!.",
+      "evidence": [
+        {
+          "address": "Calc!F7",
+          "formula": {
+            "flags": [],
+            "kind": "untrusted_text",
+            "original_length": null,
+            "risk": "none",
+            "source": "Calc!F7 (formula)",
+            "text": "=#REF!+1",
+            "truncated": false
+          },
+          "note": "root error",
+          "value": {
+            "flags": [],
+            "kind": "untrusted_text",
+            "original_length": null,
+            "risk": "none",
+            "source": "Calc!F7 (cell error)",
+            "text": "#REF!",
+            "truncated": false
+          }
+        }
+      ],
+      "id": "C04-acf2d1b4cf",
+      "severity": "critical",
+      "sheet": "Calc",
+      "suggested_fix": null
+    },
+    {
+      "affected_count": 1,
+      "cell": "Calc!B11",
+      "check_id": "C05",
+      "confidence": "high",
+      "description": "Cell refers to itself.",
+      "evidence": [
+        {
+          "address": "Calc!B11",
+          "formula": {
+            "flags": [],
+            "kind": "untrusted_text",
+            "original_length": null,
+            "risk": "none",
+            "source": "Calc!B11 (formula)",
+            "text": "=B11+1",
+            "truncated": false
+          },
+          "note": null,
+          "value": {
+            "flags": [],
+            "kind": "untrusted_text",
+            "original_length": null,
+            "risk": "none",
+            "source": "Calc!B11 (cell error)",
+            "text": "#VALUE!",
+            "truncated": false
+          }
+        }
+      ],
+      "id": "C05-948aec5f11",
+      "severity": "critical",
+      "sheet": "Calc",
+      "suggested_fix": null
+    },
+    {
+      "affected_count": 3,
+      "cell": "Calc!B12",
+      "check_id": "C05",
+      "confidence": "high",
+      "description": "Circular reference through 3 cells: Calc!B12 -> Calc!C12 -> Calc!D12.",
+      "evidence": [
+        {
+          "address": "Calc!B12",
+          "formula": {
+            "flags": [],
+            "kind": "untrusted_text",
+            "original_length": null,
+            "risk": "none",
+            "source": "Calc!B12 (formula)",
+            "text": "=C12+1",
+            "truncated": false
+          },
+          "note": null,
+          "value": {
+            "flags": [],
+            "kind": "untrusted_text",
+            "original_length": null,
+            "risk": "none",
+            "source": "Calc!B12 (cell error)",
+            "text": "#VALUE!",
+            "truncated": false
+          }
+        },
+        {
+          "address": "Calc!C12",
+          "formula": {
+            "flags": [],
+            "kind": "untrusted_text",
+            "original_length": null,
+            "risk": "none",
+            "source": "Calc!C12 (formula)",
+            "text": "=D12+1",
+            "truncated": false
+          },
+          "note": null,
+          "value": {
+            "flags": [],
+            "kind": "untrusted_text",
+            "original_length": null,
+            "risk": "none",
+            "source": "Calc!C12 (cell error)",
+            "text": "#VALUE!",
+            "truncated": false
+          }
+        },
+        {
+          "address": "Calc!D12",
+          "formula": {
+            "flags": [],
+            "kind": "untrusted_text",
+            "original_length": null,
+            "risk": "none",
+            "source": "Calc!D12 (formula)",
+            "text": "=B12+1",
+            "truncated": false
+          },
+          "note": null,
+          "value": {
+            "flags": [],
+            "kind": "untrusted_text",
+            "original_length": null,
+            "risk": "none",
+            "source": "Calc!D12 (cell error)",
+            "text": "#VALUE!",
+            "truncated": false
+          }
+        }
+      ],
+      "id": "C05-6f2d6d54bf",
+      "severity": "critical",
+      "sheet": "Calc",
+      "suggested_fix": null
+    },
+    {
+      "affected_count": 6,
+      "cell": "Calc!B5",
+      "check_id": "C01",
+      "confidence": "medium",
+      "description": "Formula contains hardcoded number(s) 0.2; move them to labelled input cells. The same pattern appears in 5 more cell(s).",
+      "evidence": [
+        {
+          "address": "Calc!B5",
+          "formula": {
+            "flags": [],
+            "kind": "untrusted_text",
+            "original_length": null,
+            "risk": "none",
+            "source": "Calc!B5 (formula)",
+            "text": "=B4*0.2",
+            "truncated": false
+          },
+          "note": null,
+          "value": 10
+        },
+        {
+          "address": "Calc!C5",
+          "formula": {
+            "flags": [],
+            "kind": "untrusted_text",
+            "original_length": null,
+            "risk": "none",
+            "source": "Calc!C5 (formula)",
+            "text": "=C4*0.2",
+            "truncated": false
+          },
+          "note": null,
+          "value": 12
+        },
+        {
+          "address": "Calc!D5",
+          "formula": {
+            "flags": [],
+            "kind": "untrusted_text",
+            "original_length": null,
+            "risk": "none",
+            "source": "Calc!D5 (formula)",
+            "text": "=D4*0.2",
+            "truncated": false
+          },
+          "note": null,
+          "value": 14
+        }
+      ],
+      "id": "C01-c6c6b13a89",
+      "severity": "warning",
+      "sheet": "Calc",
+      "suggested_fix": {
+        "flags": [],
+        "kind": "untrusted_text",
+        "original_length": null,
+        "risk": "none",
+        "source": "suggested formula for Calc!B5 (after creating a named input Input_0_2 = 0.2)",
+        "text": "=B4*Input_0_2",
+        "truncated": false
+      }
+    },
+    {
+      "affected_count": 1,
+      "cell": "Calc!D7",
+      "check_id": "C01",
+      "confidence": "medium",
+      "description": "Formula contains hardcoded number(s) 99; move them to labelled input cells.",
+      "evidence": [
+        {
+          "address": "Calc!D7",
+          "formula": {
+            "flags": [],
+            "kind": "untrusted_text",
+            "original_length": null,
+            "risk": "none",
+            "source": "Calc!D7 (formula)",
+            "text": "=VLOOKUP(99,B2:C3,2,FALSE())",
+            "truncated": false
+          },
+          "note": null,
+          "value": {
+            "flags": [],
+            "kind": "untrusted_text",
+            "original_length": null,
+            "risk": "none",
+            "source": "Calc!D7 (cell error)",
+            "text": "#N/A",
+            "truncated": false
+          }
+        }
+      ],
+      "id": "C01-cbdf9e6686",
+      "severity": "warning",
+      "sheet": "Calc",
+      "suggested_fix": {
+        "flags": [],
+        "kind": "untrusted_text",
+        "original_length": null,
+        "risk": "none",
+        "source": "suggested formula for Calc!D7 (after creating a named input Input_99 = 99)",
+        "text": "=VLOOKUP(Input_99,B2:C3,2,FALSE())",
+        "truncated": false
+      }
+    },
+    {
+      "affected_count": 1,
+      "cell": "Calc!D7",
+      "check_id": "C04",
+      "confidence": "high",
+      "description": "Cell shows #N/A (handled by IFERROR/IFNA in Calc!D8).",
+      "evidence": [
+        {
+          "address": "Calc!D7",
+          "formula": {
+            "flags": [],
+            "kind": "untrusted_text",
+            "original_length": null,
+            "risk": "none",
+            "source": "Calc!D7 (formula)",
+            "text": "=VLOOKUP(99,B2:C3,2,FALSE())",
+            "truncated": false
+          },
+          "note": "root error",
+          "value": {
+            "flags": [],
+            "kind": "untrusted_text",
+            "original_length": null,
+            "risk": "none",
+            "source": "Calc!D7 (cell error)",
+            "text": "#N/A",
+            "truncated": false
+          }
+        }
+      ],
+      "id": "C04-dfd5f4097f",
+      "severity": "info",
+      "sheet": "Calc",
+      "suggested_fix": null
+    }
+  ],
+  "likely_outputs": [
+    {
+      "address": "Calc!H4",
+      "upstream_cells": 17
+    },
+    {
+      "address": "Calc!H2",
+      "upstream_cells": 6
+    },
+    {
+      "address": "Calc!H3",
+      "upstream_cells": 6
+    },
+    {
+      "address": "Calc!B9",
+      "upstream_cells": 6
+    },
+    {
+      "address": "Calc!D8",
+      "upstream_cells": 5
+    },
+    {
+      "address": "Calc!C5",
+      "upstream_cells": 3
+    },
+    {
+      "address": "Calc!D5",
+      "upstream_cells": 3
+    },
+    {
+      "address": "Calc!F5",
+      "upstream_cells": 3
+    },
+    {
+      "address": "Calc!G5",
+      "upstream_cells": 3
+    },
+    {
+      "address": "Calc!E5",
+      "upstream_cells": 2
+    }
+  ],
+  "options": {
+    "checks": [
+      "C01",
+      "C02",
+      "C03",
+      "C04",
+      "C05",
+      "C06",
+      "C07",
+      "C08",
+      "C09",
+      "C10",
+      "C11",
+      "C12",
+      "C13",
+      "C14"
+    ],
+    "min_severity": "info"
+  },
+  "schema_version": "0.1.0",
+  "summary": {
+    "by_check": {
+      "C01": 2,
+      "C02": 1,
+      "C04": 3,
+      "C05": 2
+    },
+    "by_severity": {
+      "critical": 5,
+      "info": 1,
+      "warning": 2
+    },
+    "total": 8
+  },
+  "tool": "sheetguard",
+  "tool_version": "0.1.0",
+  "untrusted_content": [],
+  "untrusted_summary": {
+    "by_risk": {
+      "high": 0,
+      "low": 0,
+      "medium": 0
+    },
+    "by_vector": {},
+    "total": 0
+  },
+  "workbook": {
+    "cell_count": 49,
+    "defined_names": 0,
+    "file_name": "errors.xlsx",
+    "flags": {
+      "activex": false,
+      "cached_values": true,
+      "calc_mode": "auto",
+      "data_connections": false,
+      "date_1904": false,
+      "dde": false,
+      "external_links": false,
+      "hidden_sheets": 0,
+      "iterative_calc": false,
+      "macros_present": false,
+      "ole_objects": false,
+      "untrusted_content_found": false,
+      "vba": false,
+      "very_hidden_sheets": 0,
+      "workbook_protected": false,
+      "xlm_macros": false
+    },
+    "formula_count": 25,
+    "sha256": "790d07189f32568f96dc827b966ec059890c05ac4b8977f3047216dd8ef52f7a",
+    "sheet_count": 1,
+    "sheets": [
+      {
+        "cells": 49,
+        "formulas": 25,
+        "hidden_columns": 0,
+        "hidden_rows": 0,
+        "index": 0,
+        "name": "Calc",
+        "protected": false,
+        "state": "visible",
+        "tables": [],
+        "used_range": "Calc!A1:H12"
+      }
+    ],
+    "size_bytes": 6547,
+    "tables": 0
+  }
+}

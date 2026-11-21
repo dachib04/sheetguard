@@ -1,0 +1,19 @@
+__pycache__/
+*.py[cod]
+.venv/
+.mypy_cache/
+.ruff_cache/
+.pytest_cache/
+.hypothesis/
+.coverage
+htmlcov/
+dist/
+build/
+*.egg-info/
+# Never commit real workbooks by accident: only generated fixtures are allowed.
+*.xlsx
+*.xlsm
+!tests/fixtures/**/*.xlsx
+!tests/fixtures/**/*.xlsm
+!bench/corpus/**/*.xlsx
+.env

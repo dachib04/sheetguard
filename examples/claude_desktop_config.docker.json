@@ -1,0 +1,14 @@
+{
+  "mcpServers": {
+    "sheetguard": {
+      "command": "docker",
+      "args": [
+        "run", "-i", "--rm",
+        "--read-only", "--cap-drop", "ALL", "--security-opt", "no-new-privileges",
+        "--network", "none", "--memory", "2g", "--pids-limit", "64",
+        "-v", "/Users/YOU/Documents/Models:/data:ro",
+        "sheetguard:0.1.0"
+      ]
+    }
+  }
+}
