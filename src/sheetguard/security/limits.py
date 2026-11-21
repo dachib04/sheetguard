@@ -55,7 +55,8 @@ class Deadline:
         self._end = time.monotonic() + seconds
 
     def check(self) -> None:
-        if time.monotonic() > self._end:
+        # >= so a zero budget fails at once, even on clocks with coarse ticks (Windows)
+        if time.monotonic() >= self._end:
             raise TimeoutExceededError("The operation exceeded the per-call time limit.")
 
     @property
