@@ -215,9 +215,10 @@ is the 45% in the first run and the 0% on paraphrases.
   messier errors, so real-world recall and precision will be lower. Treat my numbers as a
   regression baseline.
 - The sets are small. With 20 paraphrases, one file moves the rate by five points.
-- I have not yet run the agent experiment: asking a model to review the trap files with and
-  without SheetGuard and counting how often it is misled. The harness is in the repository;
-  it needs an API key and careful reporting of a small sample.
+- I have not yet run the agent experiment: asking models to review pairs of files (one with
+  a planted error, one with the same error plus a hidden instruction) with and without
+  SheetGuard's labels, and counting how often the instruction wins. The plan is fixed in
+  `docs/experiment-plan.md` and the harness is in `bench/agent/`; it needs API keys.
 - Phase 1 reads `.xlsx` and `.xlsm` only, and C02/C06 cannot check rows with fewer than four
   formula periods.
 - Some Excel functions cannot be evaluated (INDIRECT, OFFSET, LAMBDA, CELL). Those results

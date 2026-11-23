@@ -112,6 +112,6 @@ those 20 sentences would turn 0% into a meaningless 100%.
 - **Paraphrases defeat the scanner.** This is the central finding. Phrase heuristics catch
   the injections people copy from blog posts and miss instructions written naturally. The
   untrusted envelope is the defence that does not depend on detection.
-- **Agent experiment** (does an LLM get misled with and without SheetGuard?): the harness is
-  in `bench/agent_experiment.py` but was **not run** for v0.1.0 (no API access in the build
-  environment). No numbers are claimed.
+- **Agent experiment** (does an LLM get misled with and without SheetGuard?): planned in
+  [experiment-plan.md](experiment-plan.md), with a paired corpus (`bench/corpus/agent/`) and
+  the harness in `bench/agent/`. It has **not been run** yet. No numbers are claimed.

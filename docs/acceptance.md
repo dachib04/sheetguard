@@ -126,7 +126,7 @@ symlink escaping the root.
 | Fuzz / malicious | done | `tests/malicious/` |
 | MCP integration | done | `tests/mcp/` incl. a real stdio session |
 | Benchmark | done | 24 clean, 345 seeded, 40 traps, 54 benign (+20 held-out paraphrases); one command |
-| Agent experiment | SHOULD, not run | Harness in `bench/agent_experiment.py`; needs an API key. No numbers claimed |
+| Agent experiment | SHOULD, not run | Pre-registered plan in `docs/experiment-plan.md`, harness in `bench/agent/`; needs API keys. No numbers claimed |
 
 ## 11 Deliverables
 

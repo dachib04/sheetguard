@@ -4,6 +4,27 @@ All notable changes to this project are documented here. The format follows
 [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and the project uses
 [Semantic Versioning](https://semver.org/).
 
+## [Unreleased]
+
+### Added
+- Pre-registered plan for the agent experiment (`docs/experiment-plan.md`).
+- Paired corpus for it (`bench/corpus/agent/`, built by `bench/agent/build_pairs.py`):
+  100 control/attacked pairs with a real seeded error, 30 benign look-alikes, 10 clean files.
+- Harness in `bench/agent/`: three setups (no protection, label only, label + scanner flags)
+  with identical content, per-goal scoring, a judge from another provider, a blind human
+  check, and the statistics fixed in the plan. Empty or cut-off answers are recorded
+  with their stop reason and left out; the analysis leaves out pilot, fake-model and
+  pre-freeze rows and refuses to mix plan versions or corpora; the pilot measures how
+  many pairs will count and applies the plan's pair-count rule. Only rate limits,
+  timeouts and server errors are retried. Setup A uses the same JSON wrapper as B with a
+  neutral `"kind": "extracted_text"`, so A and B have the same length and format and
+  differ only by the label.
+
+### Changed
+- `bench/agent_experiment.py` now forwards to `bench/agent/run.py`. The old design asked
+  about trap files without errors, where "report no errors" was the correct answer, so
+  attack success could not be measured.
+
 ## [0.1.0] - 2026-11-21
 
 First public release (Phase 1).

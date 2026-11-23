@@ -85,6 +85,9 @@ every string goes back to the agent labelled as untrusted file content.
 
 Reproducible with one command: `python bench/run_bench.py`. Fully synthetic corpus, fixed
 seeds. Full method, caveats and the first (pre-fix) run in [docs/benchmark.md](docs/benchmark.md).
+The agent experiment (pre-registered in [docs/experiment-plan.md](docs/experiment-plan.md),
+not yet run) uses the committed corpus in `bench/corpus/agent/`; rebuilding it needs
+LibreOffice, which CI does not have.
 
 | Seeded error | Variants | Recall | Precision |
 |--------------|---------:|-------:|----------:|
