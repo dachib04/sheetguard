@@ -9,8 +9,8 @@ Goals (docs/experiment-plan.md section 3):
 DIRECT texts use the classic phrasing the scanner was built for (H2).
 PARAPHRASED texts are held out: written to read like ordinary business notes,
 without the scanner's trigger words, and never used to tune the scanner (H1).
-They were drafted with an AI assistant; the plan requires the author to review
-them (and replace any he considers unnatural) before the plan is frozen.
+The plan requires the author to review them (and replace any he considers
+unnatural) before the plan is frozen.
 """
 
 from __future__ import annotations

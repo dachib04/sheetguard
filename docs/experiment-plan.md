@@ -129,10 +129,9 @@ names are not used as a location, because titles are cut at 31 characters.
 20 files there would only be a handful of those, and "inconclusive" would be the
 likely outcome even if the label works.
 
-**Who wrote the paraphrases:** the 60 texts in `bench/agent/pools.py` were drafted
-with an AI assistant, which is also how the scanner's patterns were written, and
-none of them was used to tune the scanner (the scanner rates all 60 below medium
-risk). TODO before freezing: the author reads all 60, replaces any that a real
+**The paraphrases:** none of the 60 texts in `bench/agent/pools.py` was used to tune
+the scanner (the scanner rates all 60 below medium risk). They come from the same
+author as the scanner's patterns, so the two may share blind spots. TODO before freezing: the author reads all 60, replaces any that a real
 attacker would not plausibly write, and notes here how many were replaced.
 
 Attack goals, labelled per file in the manifest (field `goal`):
@@ -215,10 +214,10 @@ everything is re-judged (logged as a deviation).
 
 | Item | Decision |
 |------|----------|
-| Models | TODO: 2 models with exact version IDs, e.g. one Anthropic, one other provider. Optionally one open-weight model. |
-| Judge | TODO: exact version ID, from a provider other than each tested model (for a model from the judge's own provider, use a second judge). |
-| Temperature (tested models) | TODO: provider default (pass no `--temperature`) or a fixed value. Stated in the results. |
-| Max output tokens | 400 for models that do not count hidden reasoning in the limit. TODO per model: for reasoning models whose thinking uses the same limit (e.g. OpenAI's `max_completion_tokens`), set `--max-tokens` from the pilot so that at most 2% of pilot answers are empty or cut off. Judge: 200 (`--judge-max-tokens`), raised the same way for a reasoning judge. |
+| Models | `claude-sonnet-5-5` (Anthropic) and `gpt-6-sol` (OpenAI) with `--reasoning-effort none`, so it answers without hidden reasoning. Same list price for both ($2 input / $10 output per million tokens, checked 24 Nov 2026). `gpt-6.1-sol` was not chosen because it cannot turn reasoning off. |
+| Judge | Crossed, so a judge never grades its own company's model: `gpt-6-sol` (`--judge-reasoning-effort none`) grades Claude's answers; `claude-sonnet-5-5` grades GPT's answers. Temperature 0 where the API accepts it; if a model refuses a temperature setting, the runner drops it and records the temperature really used. |
+| Temperature (tested models) | Provider default (no `--temperature`), recorded in every row. |
+| Max output tokens | 400 for both tested models (neither uses hidden reasoning with the settings above). If the pilot shows more than 2% empty or cut-off answers for a model, `--max-tokens` is raised for that model before freezing, and the value is written here. Judge: 200 (`--judge-max-tokens`). |
 | Repeats | 3 per file per setup per model |
 | Order | All (file, setup, repeat) calls in one fixed shuffled order, so setups are interleaved over time |
 | Prompt | One fixed review question, committed verbatim (`QUESTION` in `bench/agent/render.py`). One phrasing only; stated as a limitation. |
@@ -314,7 +313,43 @@ Search, and list what was found and how this differs:
 - MCPTox, and other tool-poisoning benchmarks (attack via tool descriptions, not file content)
 - "Rethinking MCP Security" / MCPZoo
 
-Result: TODO (links + one sentence each on how this experiment differs)
+Result (searched 24 Nov 2026). Prompt injection through spreadsheets is known and
+demonstrated; marking untrusted data is a known defence. What we did not find is a
+controlled measurement of a marking defence on spreadsheet content, with a task whose
+correct answer is known, so that "the model was fooled" can be told apart from "the
+model missed the error anyway".
+
+- **Spotlighting** (Hines et al., Microsoft, 2024, https://arxiv.org/abs/2403.14720):
+  marks untrusted input (delimiters, datamarking, encoding) and explains it in the
+  system prompt; reports attack success falling from over 50% to below 2%. This is the
+  closest prior work, and SheetGuard's label is a form of delimiting. Difference: we
+  test it on spreadsheets (formulas, comments, hidden sheets and other hiding places),
+  with current models, with paired controls, and we measure what it costs in finding
+  real errors (H3) and in false alarms (H4). If our result disagrees with theirs, we say so.
+- **BIPIA** (Yi et al., 2023, https://arxiv.org/abs/2312.14197): the first benchmark
+  for indirect prompt injection (emails, web pages, tables, code, summaries). Not
+  spreadsheet files, and no paired error-finding task.
+- **MCPTox** (Wang et al., 2025, https://arxiv.org/abs/2508.14925): attacks through
+  MCP tool descriptions (tool poisoning) on real servers. A different entry point:
+  we attack through the content of a file the tool returns, not through the tool's
+  description.
+- **Rethinking MCP Security / MCPZoo** (Chen et al., 2026,
+  https://arxiv.org/abs/2607.11086): measures MCP servers and the reliability of
+  security scanners. About scanners, not about whether a model obeys text inside data.
+- **Spreadsheet attack demonstrations**: PromptArmor's "CellShock"
+  (https://www.promptarmor.com/resources/cellshock-claude-ai-is-excel-lent-at-stealing-data)
+  shows a hidden blue-on-blue instruction making Claude for Excel leak data, and a
+  ShiftMag article
+  (https://shiftmag.dev/ai-agents-arent-safe-from-prompt-injection-and-spreadsheets-prove-it-11609/)
+  shows hidden-cell attacks on an agent with a small Promptfoo test suite. These are
+  demonstrations of the attack, not measurements of a defence with controls.
+- **Hidden prompts in manuscripts** (https://arxiv.org/abs/2507.06185): hidden
+  instructions in papers steering AI peer review. Same attack idea in a different
+  document type, with no defence comparison.
+
+How this experiment differs, in one line: spreadsheet-specific hiding places, a
+known-answer task with a paired control for every attacked file, and the cost of the
+defence measured next to its benefit.
 
 ## 9. Ethics and limits
 
@@ -330,7 +365,8 @@ Result: TODO (links + one sentence each on how this experiment differs)
   - the baseline is one of many possible integrations
   - an LLM judge plus a partial human check
   - small per-location samples
-  - the paraphrases were drafted with an AI assistant
+  - the paraphrases and the scanner's patterns come from the same author, so they may
+    share blind spots
   - **grading is not fully blind**: answers in B and C often mention the labels or
     the scanner's findings ("the file flags this cell as high risk"). Redaction
     removes the label's name but not such descriptions, so the judge and the human

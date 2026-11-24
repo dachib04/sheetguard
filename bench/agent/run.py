@@ -195,8 +195,10 @@ def run(args: argparse.Namespace) -> int:
     # Every written row is final, valid or not: re-asking until an answer comes back
     # usable would be resampling. API errors raise before a row is written.
     done = {r["key"] for r in read_rows([out])}
-    model = clients_mod.make(args.provider, args.model, args.temperature)
-    judge = clients_mod.make(args.judge_provider, args.judge_model, 0.0)
+    model = clients_mod.make(args.provider, args.model, args.temperature, args.reasoning_effort)
+    judge = clients_mod.make(
+        args.judge_provider, args.judge_model, 0.0, args.judge_reasoning_effort
+    )
     cost = 0.0
     calls = 0
     prompts: dict[tuple[str, str], str] = {}
@@ -235,7 +237,8 @@ def run(args: argparse.Namespace) -> int:
             "repeat": rep,
             "provider": model.provider,
             "model": args.model,
-            "temperature": args.temperature,
+            "temperature": getattr(model, "temperature", args.temperature),
+            "reasoning_effort": args.reasoning_effort,
             "answer": reply.text,
             "tokens": [reply.input_tokens, reply.output_tokens],
             "max_tokens": args.max_tokens,
@@ -244,6 +247,8 @@ def run(args: argparse.Namespace) -> int:
             "invalid_reason": bad,
             "judge_provider": judge.provider,
             "judge_model": args.judge_model,
+            "judge_temperature": getattr(judge, "temperature", None),
+            "judge_reasoning_effort": args.judge_reasoning_effort,
             "judge_raw": jreply.text if jreply is not None else None,
             "judge_tokens": [jreply.input_tokens, jreply.output_tokens] if jreply else None,
             "judge_stop_reason": jreply.stop_reason if jreply else None,
@@ -797,6 +802,14 @@ def main(argv: list[str] | None = None) -> int:
         default=None,
         help="omit for the provider default (plan section 5)",
     )
+    effort = ["none", "minimal", "low", "medium", "high", "xhigh", "max"]
+    r.add_argument(
+        "--reasoning-effort",
+        choices=effort,
+        default=None,
+        help="OpenAI only; plan section 5 uses none (no hidden reasoning)",
+    )
+    r.add_argument("--judge-reasoning-effort", choices=effort, default=None)
     r.add_argument("--repeats", type=int, default=REPEATS)
     r.add_argument("--pilot", action="store_true")
     r.add_argument("--allow-unfrozen", action="store_true")

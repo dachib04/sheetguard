@@ -378,8 +378,8 @@ def test_empty_answers_are_recorded_not_judged(
 
 
 class _StatusError(Exception):
-    def __init__(self, status: int) -> None:
-        super().__init__(f"HTTP {status}")
+    def __init__(self, status: int, message: str = "") -> None:
+        super().__init__(f"HTTP {status} {message}")
         self.status_code = status
 
 
@@ -527,3 +527,50 @@ def test_real_full_run_needs_a_cost_limit(tmp_path: Path, monkeypatch: pytest.Mo
         "y",
     ]
     assert runner.main(args) == 2
+
+
+# ----------------------------------------------- reasoning effort, temperature
+
+
+def test_reasoning_effort_and_temperature_are_recorded(tmp_path: Path) -> None:
+    args = _args(tmp_path, "--pilot", "--max-calls", "2", "--reasoning-effort", "none")
+    assert runner.main(args) == 0
+    row = runner.read_rows([tmp_path / "pilot.jsonl"])[0]
+    assert row["reasoning_effort"] == "none"
+    assert row["judge_temperature"] == 0.0
+    assert row["temperature"] is None
+
+
+def test_anthropic_rejects_reasoning_effort() -> None:
+    pytest.importorskip("anthropic")
+    with pytest.raises(SystemExit):
+        clients.make("anthropic", "x", None, "none")
+
+
+class _Api:
+    """Pretends to be an SDK call that refuses any temperature setting."""
+
+    def __init__(self) -> None:
+        self.seen: list[dict] = []
+
+    def __call__(self, **kwargs: object) -> str:
+        self.seen.append(dict(kwargs))
+        if "temperature" in kwargs:
+            raise _StatusError(400, "Unsupported parameter: 'temperature'")
+        return "ok"
+
+
+def test_temperature_is_dropped_once_if_the_model_refuses_it() -> None:
+    api = _Api()
+    client = clients.FakeClient(temperature=0.0)
+    assert clients._create(client, api, {"model": "m", "temperature": 0.0}) == "ok"
+    assert client.temperature is None
+    assert api.seen == [{"model": "m", "temperature": 0.0}, {"model": "m"}]
+
+
+def test_other_bad_requests_are_not_hidden() -> None:
+    def bad(**kwargs: object) -> None:
+        raise _StatusError(400, "bad model name")
+
+    with pytest.raises(_StatusError):
+        clients._create(clients.FakeClient(), bad, {"model": "m", "temperature": 0.0})

@@ -47,6 +47,24 @@ def retryable(exc: BaseException) -> bool:
     return any(word in name for word in ("Timeout", "Connection", "Overloaded", "RateLimit"))
 
 
+def rejects_temperature(exc: BaseException) -> bool:
+    """A 400 error saying the model does not accept a temperature setting."""
+    return getattr(exc, "status_code", None) == 400 and "temperature" in str(exc).lower()
+
+
+def _create(client: Any, call: Any, kwargs: dict[str, Any]) -> Any:
+    """Call the API. If the model refuses the temperature setting, drop it once and
+    remember that (the row records the temperature that was really used)."""
+    try:
+        return _retry(lambda: call(**kwargs))
+    except Exception as exc:
+        if "temperature" not in kwargs or not rejects_temperature(exc):
+            raise
+        kwargs.pop("temperature")
+        client.temperature = None
+        return _retry(lambda: call(**kwargs))
+
+
 def _retry(fn: Any, tries: int = 4, sleep: Any = time.sleep) -> Any:
     for attempt in range(tries):
         try:
@@ -61,11 +79,16 @@ def _retry(fn: Any, tries: int = 4, sleep: Any = time.sleep) -> Any:
 class AnthropicClient:
     provider = "anthropic"
 
-    def __init__(self, model: str, temperature: float | None) -> None:
+    def __init__(
+        self, model: str, temperature: float | None, reasoning_effort: str | None = None
+    ) -> None:
         import anthropic
 
+        if reasoning_effort is not None:
+            raise SystemExit("--reasoning-effort is only for OpenAI models")
         self.model = model
         self.temperature = temperature
+        self.reasoning_effort = None
         self._c = anthropic.Anthropic()
 
     def complete(self, system: str, user: str, max_tokens: int) -> Reply:
@@ -77,7 +100,7 @@ class AnthropicClient:
         }
         if self.temperature is not None:
             kwargs["temperature"] = self.temperature
-        msg = _retry(lambda: self._c.messages.create(**kwargs))
+        msg = _create(self, self._c.messages.create, kwargs)
         text = "".join(b.text for b in msg.content if getattr(b, "type", "") == "text")
         return Reply(text, msg.usage.input_tokens, msg.usage.output_tokens, str(msg.stop_reason))
 
@@ -85,11 +108,14 @@ class AnthropicClient:
 class OpenAIClient:
     provider = "openai"
 
-    def __init__(self, model: str, temperature: float | None) -> None:
+    def __init__(
+        self, model: str, temperature: float | None, reasoning_effort: str | None = None
+    ) -> None:
         import openai
 
         self.model = model
         self.temperature = temperature
+        self.reasoning_effort = reasoning_effort
         self._c = openai.OpenAI()
 
     def complete(self, system: str, user: str, max_tokens: int) -> Reply:
@@ -101,9 +127,11 @@ class OpenAIClient:
                 {"role": "user", "content": user},
             ],
         }
+        if self.reasoning_effort is not None:
+            kwargs["reasoning_effort"] = self.reasoning_effort
         if self.temperature is not None:
             kwargs["temperature"] = self.temperature
-        r = _retry(lambda: self._c.chat.completions.create(**kwargs))
+        r = _create(self, self._c.chat.completions.create, kwargs)
         usage = r.usage
         choice = r.choices[0]
         return Reply(
@@ -119,8 +147,15 @@ class FakeClient:
 
     provider = "fake"
 
-    def __init__(self, model: str = "fake", temperature: float | None = None) -> None:
+    def __init__(
+        self,
+        model: str = "fake",
+        temperature: float | None = None,
+        reasoning_effort: str | None = None,
+    ) -> None:
         self.model = model
+        self.temperature = temperature
+        self.reasoning_effort = reasoning_effort
         self.calls = 0
 
     def complete(self, system: str, user: str, max_tokens: int) -> Reply:
@@ -142,8 +177,13 @@ PROVIDERS: dict[str, type[Any]] = {
 }
 
 
-def make(provider: str, model: str, temperature: float | None) -> Client:
+def make(
+    provider: str,
+    model: str,
+    temperature: float | None,
+    reasoning_effort: str | None = None,
+) -> Client:
     if provider not in PROVIDERS:
         raise SystemExit(f"unknown provider {provider!r}; use one of {sorted(PROVIDERS)}")
-    client: Client = PROVIDERS[provider](model, temperature)
+    client: Client = PROVIDERS[provider](model, temperature, reasoning_effort)
     return client
